@@ -15,6 +15,7 @@
   "dependencies": {
     "@evidra/protocol": "workspace:*",
     "autoprefixer": "10.4.20",
+    "genlayer-js": "2.0.0-rc.1",
     "motion": "12.23.24",
     "next": "15.5.25",
     "postcss": "8.5.28",

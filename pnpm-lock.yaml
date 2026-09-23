@@ -76,6 +76,9 @@ importers:
       autoprefixer:
         specifier: 10.4.20
         version: 10.4.20(postcss@8.5.28)
+      genlayer-js:
+        specifier: 2.0.0-rc.1
+        version: 2.0.0-rc.1(@typescript-eslint/parser@8.19.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.7.3))(eslint@9.17.0(jiti@1.21.7))(typescript@5.7.3)(zod@3.24.4)
       motion:
         specifier: 12.23.24
         version: 12.23.24(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
