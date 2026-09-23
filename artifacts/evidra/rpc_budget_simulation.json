@@ -1,0 +1,54 @@
+{
+  "phase": "3.3A",
+  "network": "GenLayer Studio Dev",
+  "chain_id": 61997,
+  "quota_requests_per_day": 5000,
+  "source": "deterministic static model of the post-remediation scheduler/indexer",
+  "parameters": {
+    "index_interval_seconds": 300,
+    "index_cycles_per_day": 288,
+    "indexer_base_calls_per_cycle": 2,
+    "indexer_config_refresh_interval_seconds": 21600,
+    "indexer_config_refresh_calls": 5,
+    "indexer_config_refreshes_per_day": 4,
+    "indexer_config_calls_per_day": 20,
+    "max_mutable_requests_per_cycle": 2,
+    "calls_per_mutable_request": 2,
+    "health_light_interval_seconds": 900,
+    "health_light_calls": 2,
+    "health_full_interval_seconds": 21600,
+    "health_full_calls": 5,
+    "hard_quota_cooldown_seconds": 3600
+  },
+  "idle_scenarios": {
+    "no_mutable_requests": {
+      "indexer_calls_per_day": 576,
+      "health_calls_per_day": 212,
+      "total_calls_per_day": 808
+    },
+    "one_active_mutable_request": {
+      "indexer_calls_per_day": 1152,
+      "health_calls_per_day": 212,
+      "total_calls_per_day": 1384
+    },
+    "bounded_two_mutable_requests": {
+      "indexer_calls_per_day": 1728,
+      "health_calls_per_day": 212,
+      "total_calls_per_day": 1960
+    }
+  },
+  "user_initiated_incremental_estimates": {
+    "create_fact_server_reads": { "min": 8, "max": 12 },
+    "reassessment_server_reads": { "min": 4, "max": 6 }
+  },
+  "target": {
+    "hard_ceiling_requests_per_day": 2500,
+    "preferred_requests_per_day": 1500,
+    "bounded_idle_pass": true
+  },
+  "live_measurement": {
+    "status": "deferred_until_quota_recovery",
+    "reason": "Studio Dev daily quota was exhausted before Phase 3.3A",
+    "writes_attempted": false
+  }
+}

@@ -1,0 +1,787 @@
+{
+  "network": {
+    "name": "GenLayer Studio Dev",
+    "rpc": "https://studio-dev.genlayer.com/api",
+    "chainId": 61997
+  },
+  "deployment": {
+    "policyRegistry": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+    "registry": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+    "resolver": "0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477",
+    "consumerProbe": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F"
+  },
+  "readMode": "latest-final",
+  "uniquePublicViews": {
+    "total": 64,
+    "passed": 64,
+    "failed": 0
+  },
+  "results": [
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_source_policy",
+      "result": "PASS",
+      "actual": {
+        "exists": true,
+        "policy_id": "core",
+        "version": 1,
+        "name": "Core official sources",
+        "active": true,
+        "min_primary_sources": 1,
+        "min_independent_sources": 1,
+        "allowed_classes": "OFFICIAL,PRIMARY,INDEPENDENT_SECONDARY",
+        "disallowed_classes": "SOCIAL,COMMUNITY",
+        "require_cross_check": true,
+        "semantic_rules": "Prefer primary official documents. Duplicate mirrors do not count as independent sources. A failed URL must not poison other usable sources.",
+        "policy_hash": "9873510c8ec0dec312548910acce8207a8022f7c5327c6614c09154f9a268f27",
+        "published_at": "1789997889",
+        "deprecated": false
+      }
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_latest_source_policy",
+      "result": "PASS",
+      "actual": {
+        "exists": true,
+        "policy_id": "core",
+        "version": 1,
+        "name": "Core official sources",
+        "active": true,
+        "min_primary_sources": 1,
+        "min_independent_sources": 1,
+        "allowed_classes": "OFFICIAL,PRIMARY,INDEPENDENT_SECONDARY",
+        "disallowed_classes": "SOCIAL,COMMUNITY",
+        "require_cross_check": true,
+        "semantic_rules": "Prefer primary official documents. Duplicate mirrors do not count as independent sources. A failed URL must not poison other usable sources.",
+        "policy_hash": "9873510c8ec0dec312548910acce8207a8022f7c5327c6614c09154f9a268f27",
+        "published_at": "1789997889",
+        "deprecated": false
+      }
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "is_source_policy_active",
+      "result": "PASS",
+      "actual": true
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_policy_hash",
+      "result": "PASS",
+      "actual": "9873510c8ec0dec312548910acce8207a8022f7c5327c6614c09154f9a268f27"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_template",
+      "result": "PASS",
+      "actual": {
+        "exists": true,
+        "template_id": "launch",
+        "version": 1,
+        "name": "Launch before date",
+        "active": true,
+        "fact_type": "immutable_launch",
+        "required_fields": "subject,temporal",
+        "resolution_instructions": "An announcement alone does not count as launch. Require a production mainnet. User context cannot override these template rules.",
+        "default_policy_id": "core",
+        "default_policy_version": 1,
+        "template_hash": "ad79e4f13ae379ea23b62568f554436bef80366e7f9e2b968164830d1b88592e",
+        "published_at": "1789998027",
+        "deprecated": false
+      }
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_latest_template",
+      "result": "PASS",
+      "actual": {
+        "exists": true,
+        "template_id": "launch",
+        "version": 1,
+        "name": "Launch before date",
+        "active": true,
+        "fact_type": "immutable_launch",
+        "required_fields": "subject,temporal",
+        "resolution_instructions": "An announcement alone does not count as launch. Require a production mainnet. User context cannot override these template rules.",
+        "default_policy_id": "core",
+        "default_policy_version": 1,
+        "template_hash": "ad79e4f13ae379ea23b62568f554436bef80366e7f9e2b968164830d1b88592e",
+        "published_at": "1789998027",
+        "deprecated": false
+      }
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "is_template_active",
+      "result": "PASS",
+      "actual": true
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_template_hash",
+      "result": "PASS",
+      "actual": "ad79e4f13ae379ea23b62568f554436bef80366e7f9e2b968164830d1b88592e"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_latest_policy_version",
+      "result": "PASS",
+      "actual": 1
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_latest_template_version",
+      "result": "PASS",
+      "actual": 1
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_ownership",
+      "result": "PASS",
+      "actual": {
+        "owner": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd",
+        "pending_owner": "0x0000000000000000000000000000000000000000"
+      }
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_owner",
+      "result": "PASS",
+      "actual": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_pending_owner",
+      "result": "PASS",
+      "actual": "0x0000000000000000000000000000000000000000"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_protocol_stats",
+      "result": "PASS",
+      "actual": "{\"policy_count\":3,\"template_count\":2}"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_event_count",
+      "result": "PASS",
+      "actual": "5"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_events",
+      "result": "PASS",
+      "actual": {
+        "offset": 0,
+        "limit": 50,
+        "total": 5,
+        "items": [
+          {
+            "index": "0",
+            "topic": "PolicyPublished",
+            "payload": "{\"policy_hash\":\"9873510c8ec0dec312548910acce8207a8022f7c5327c6614c09154f9a268f27\",\"policy_id\":\"core\",\"version\":1}",
+            "timestamp": "1789997889"
+          },
+          {
+            "index": "1",
+            "topic": "PolicyPublished",
+            "payload": "{\"policy_hash\":\"e432ebeb2d2029505886af9da948b101dceb742cfa539e7459ff8a53b68f1ff8\",\"policy_id\":\"solo\",\"version\":1}",
+            "timestamp": "1789997935"
+          },
+          {
+            "index": "2",
+            "topic": "PolicyPublished",
+            "payload": "{\"policy_hash\":\"c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4\",\"policy_id\":\"freeze_official\",\"version\":1}",
+            "timestamp": "1789997981"
+          },
+          {
+            "index": "3",
+            "topic": "TemplatePublished",
+            "payload": "{\"template_hash\":\"ad79e4f13ae379ea23b62568f554436bef80366e7f9e2b968164830d1b88592e\",\"template_id\":\"launch\",\"version\":1}",
+            "timestamp": "1789998027"
+          },
+          {
+            "index": "4",
+            "topic": "TemplatePublished",
+            "payload": "{\"template_hash\":\"e70540d76ba50adac87d03bdb7d0ab948e40883c15949f6c0843069d050156af\",\"template_id\":\"launch_announce\",\"version\":1}",
+            "timestamp": "1789998072"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "compute_policy_hash",
+      "result": "PASS",
+      "actual": "f66844173955bb8eff4aa3f100ea3a686f98729335d5be5118264ee0fc4129d4"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "compute_template_hash",
+      "result": "PASS",
+      "actual": "6717983905c63dc3b3e53bde8f266faca3259562a36d9c0be85e932af13cabd1"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_registry_version",
+      "result": "PASS",
+      "actual": "evidra-policy-registry-v1"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_request",
+      "result": "PASS",
+      "actual": {
+        "exists": true,
+        "request_id": "3",
+        "requester": "0x578fc6d37a351160dcd32de30e55c87ead34da31",
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "spec_hash": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "policy_id": "freeze_official",
+        "policy_version": 1,
+        "assigned_resolver": "0xd21e9e95cbd59058fbcc2599c3a28a3fae44c477",
+        "created_at": "1789999315",
+        "status": "RESOLVED",
+        "active_attempt_id": "1",
+        "last_attempt_at": "1789999315",
+        "retry_after": "1789999375",
+        "max_attempts": 5,
+        "attempt_count": 1,
+        "callback_target": "0x5b73a45ba6b3560b6ecd020feff95c5fa0693c2f",
+        "callback_status": "DISPATCHED",
+        "reuse_mode": "FORCE_FRESH_RESOLUTION",
+        "fee_paid": "0",
+        "mutability": "IMMUTABLE",
+        "schema_version": "1",
+        "ttl_seconds": "0",
+        "seed_urls_json": "[\"https://example.com/\"]",
+        "subject": "example.com",
+        "predicate": "publishes the Example Domain page",
+        "object_value": "Example Domain",
+        "qualifiers": "",
+        "temporal": "2026-09-21",
+        "description": "Verify the public Example Domain page.",
+        "current_resolution_id": "3",
+        "supplemental_urls_json": "[\"https://example.com/\"]",
+        "template_id": "",
+        "template_version": 0,
+        "template_hash": "",
+        "fact_type": "",
+        "template_resolution_instructions": ""
+      }
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_request_status",
+      "result": "PASS",
+      "actual": "RESOLVED"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_fact",
+      "result": "PASS",
+      "actual": {
+        "exists": true,
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "schema_version": "1",
+        "mutability": "IMMUTABLE",
+        "current_resolution_id": "3",
+        "latest_resolution_id": "3",
+        "current_request_id": "3",
+        "current_outcome": "TRUE",
+        "resolved_at": "1789999390",
+        "valid_until": "0",
+        "resolution_version": 2,
+        "template_hash": ""
+      }
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_current_resolution",
+      "result": "PASS",
+      "actual": {
+        "exists": true,
+        "resolution_id": "3",
+        "request_id": "3",
+        "attempt_id": "1",
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "spec_hash": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "outcome": "TRUE",
+        "diagnostic_reason": "NONE",
+        "policy_satisfied": true,
+        "resolver_version": "evidra-resolver-v1",
+        "evidence_manifest_hash": "73e31c561cc99d518dee2e91779f2cdbb3fa884cb2137dcbef131103d0749d36",
+        "reasoning_summary": "The official usable source at example.com displays the title and content of the Example Domain page, supporting that example.com publishes the Example Domain page.",
+        "evaluated_at": "1789999390",
+        "committed_at": "1789999390",
+        "valid_until": "0",
+        "resolution_version": 2,
+        "supersedes_resolution_id": "2",
+        "template_id": "",
+        "template_version": 0,
+        "template_hash": ""
+      }
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_latest_resolution",
+      "result": "PASS",
+      "actual": {
+        "exists": true,
+        "resolution_id": "3",
+        "request_id": "3",
+        "attempt_id": "1",
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "spec_hash": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "outcome": "TRUE",
+        "diagnostic_reason": "NONE",
+        "policy_satisfied": true,
+        "resolver_version": "evidra-resolver-v1",
+        "evidence_manifest_hash": "73e31c561cc99d518dee2e91779f2cdbb3fa884cb2137dcbef131103d0749d36",
+        "reasoning_summary": "The official usable source at example.com displays the title and content of the Example Domain page, supporting that example.com publishes the Example Domain page.",
+        "evaluated_at": "1789999390",
+        "committed_at": "1789999390",
+        "valid_until": "0",
+        "resolution_version": 2,
+        "supersedes_resolution_id": "2",
+        "template_id": "",
+        "template_version": 0,
+        "template_hash": ""
+      }
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_resolution",
+      "result": "PASS",
+      "actual": {
+        "exists": true,
+        "resolution_id": "3",
+        "request_id": "3",
+        "attempt_id": "1",
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "spec_hash": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "outcome": "TRUE",
+        "diagnostic_reason": "NONE",
+        "policy_satisfied": true,
+        "resolver_version": "evidra-resolver-v1",
+        "evidence_manifest_hash": "73e31c561cc99d518dee2e91779f2cdbb3fa884cb2137dcbef131103d0749d36",
+        "reasoning_summary": "The official usable source at example.com displays the title and content of the Example Domain page, supporting that example.com publishes the Example Domain page.",
+        "evaluated_at": "1789999390",
+        "committed_at": "1789999390",
+        "valid_until": "0",
+        "resolution_version": 2,
+        "supersedes_resolution_id": "2",
+        "template_id": "",
+        "template_version": 0,
+        "template_hash": ""
+      }
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_resolution_history",
+      "result": "PASS",
+      "actual": {
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "offset": 0,
+        "limit": 50,
+        "total": 2,
+        "resolution_ids": [
+          "2",
+          "3"
+        ]
+      }
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_evidence_manifest",
+      "result": "PASS",
+      "actual": {
+        "exists": true,
+        "resolution_id": "3",
+        "manifest_hash": "73e31c561cc99d518dee2e91779f2cdbb3fa884cb2137dcbef131103d0749d36",
+        "manifest_json": "[{\"category\":\"web\",\"evidence_hash\":\"7559101ddc53819aabdec7cb24ab8a739a6e45f28d2aa4a87fd5b370f2d4bc85\",\"fetch_status\":\"USABLE\",\"is_independent\":true,\"is_primary\":true,\"policy_eligible\":true,\"provenance_group\":\"example.com\",\"relevant_timestamp\":\"\",\"source_class\":\"OFFICIAL\",\"source_origin\":\"supplemental\",\"url\":\"https://example.com/\"}]",
+        "entries": [
+          {
+            "url": "https://example.com/",
+            "status": "USABLE",
+            "origin": "supplemental",
+            "category": "web",
+            "provenance_group": "example.com",
+            "source_class": "OFFICIAL",
+            "is_primary": true,
+            "is_independent": true,
+            "policy_eligible": true,
+            "evidence_hash": "7559101ddc53819aabdec7cb24ab8a739a6e45f28d2aa4a87fd5b370f2d4bc85"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "compute_claim_key",
+      "result": "PASS",
+      "actual": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "compute_fact_key",
+      "result": "PASS",
+      "actual": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "compute_spec_hash",
+      "result": "PASS",
+      "actual": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "is_fact_fresh",
+      "result": "PASS",
+      "actual": true
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "can_reuse_fact",
+      "result": "PASS",
+      "actual": true
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "can_reuse_with_freshness",
+      "result": "PASS",
+      "actual": true
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "compute_callback_id",
+      "result": "PASS",
+      "actual": "d3084ea438a6f52b3163a43be3a246ca3a1c80dcddbf547038f982dc64684cd0"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "quote_resolution_fee",
+      "result": "PASS",
+      "actual": "0"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_protocol_config",
+      "result": "PASS",
+      "actual": {
+        "owner": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd",
+        "pending_owner": "0x0000000000000000000000000000000000000000",
+        "guardian": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd",
+        "policy_registry": "0x8583f226db262a97dba3f00c3d2a0d13d08b6c71",
+        "default_resolver": "0xd21e9e95cbd59058fbcc2599c3a28a3fae44c477",
+        "paused_new_requests": false,
+        "fee_base": "0",
+        "fee_per_attempt": "0",
+        "fee_reuse": "0",
+        "retry_delay_seconds": "60",
+        "stale_after_seconds": "86400",
+        "max_attempts": 5,
+        "max_seed_urls": 8,
+        "schema_version": "1",
+        "registry_version": "evidra-registry-v1"
+      }
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_resolver",
+      "result": "PASS",
+      "actual": {
+        "exists": true,
+        "resolver": "0xd21e9e95cbd59058fbcc2599c3a28a3fae44c477",
+        "enabled": true,
+        "resolver_version": "evidra-resolver-v1",
+        "capabilities": "{\"equivalence\":\"critical-fields-only\",\"injection_hardened\":true,\"llm_access\":true,\"source_isolation\":true,\"version\":\"evidra-resolver-v1\",\"web_access\":true}",
+        "registered_at": "1789998259"
+      }
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_protocol_stats",
+      "result": "PASS",
+      "actual": {
+        "request_count": "3",
+        "resolution_count": "3",
+        "reused_count": "0",
+        "paused": false,
+        "event_count": "15"
+      }
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_credit",
+      "result": "PASS",
+      "actual": "0"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_job_snapshot",
+      "result": "PASS",
+      "actual": "{\"active_attempt_id\":1,\"assigned_resolver\":\"0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477\",\"callback_status\":\"DISPATCHED\",\"callback_target\":\"0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F\",\"claim_key\":\"5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3\",\"description\":\"Verify the public Example Domain page.\",\"fact_key\":\"e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1\",\"fact_type\":\"\",\"mutability\":\"IMMUTABLE\",\"object_value\":\"Example Domain\",\"policy_hash\":\"c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4\",\"policy_id\":\"freeze_official\",\"policy_version\":1,\"predicate\":\"publishes the Example Domain page\",\"qualifiers\":\"\",\"request_id\":3,\"schema_version\":\"1\",\"seed_urls_json\":\"[\\\"https://example.com/\\\"]\",\"spec_hash\":\"cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b\",\"status\":\"RESOLVED\",\"subject\":\"example.com\",\"supplemental_urls_json\":\"[\\\"https://example.com/\\\"]\",\"template_hash\":\"\",\"template_id\":\"\",\"template_resolution_instructions\":\"\",\"template_version\":0,\"temporal\":\"2026-09-21\",\"ttl_seconds\":0}"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_owner",
+      "result": "PASS",
+      "actual": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_guardian",
+      "result": "PASS",
+      "actual": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "is_paused",
+      "result": "PASS",
+      "actual": false
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_policy_registry",
+      "result": "PASS",
+      "actual": "0x8583f226db262a97dba3f00c3d2a0d13d08b6c71"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_default_resolver",
+      "result": "PASS",
+      "actual": "0xd21e9e95cbd59058fbcc2599c3a28a3fae44c477"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_registry_version",
+      "result": "PASS",
+      "actual": "evidra-registry-v1"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_event_count",
+      "result": "PASS",
+      "actual": "15"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_events",
+      "result": "PASS",
+      "actual": {
+        "offset": 0,
+        "limit": 50,
+        "total": 15,
+        "items": [
+          {
+            "index": "0",
+            "topic": "ResolverUpdated",
+            "payload": "{\"enabled\":true,\"resolver\":\"0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477\"}",
+            "timestamp": "1789998259"
+          },
+          {
+            "index": "1",
+            "topic": "ResolverUpdated",
+            "payload": "{\"default\":\"0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477\"}",
+            "timestamp": "1789998306"
+          },
+          {
+            "index": "2",
+            "topic": "FactRequested",
+            "payload": "{\"claim_key\":\"5958d9c2b6ea3d39343decaca7a01ed715175808924a976df9c4eabd95578743\",\"fact_key\":\"15bb7db3ca759a01bc529872357a9380dce5c85188fdac10e163c738f5b59f08\",\"request_id\":1,\"reuse\":false}",
+            "timestamp": "1789998841"
+          },
+          {
+            "index": "3",
+            "topic": "ResolutionDispatched",
+            "payload": "{\"attempt_id\":1,\"request_id\":1,\"resolver\":\"0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477\"}",
+            "timestamp": "1789998841"
+          },
+          {
+            "index": "4",
+            "topic": "CallbackRequested",
+            "payload": "{\"callback_id\":\"b367d08bb662f05f7dcc653d2e92847089f0e0be7186a61dc4189855595552fc\",\"request_id\":1,\"resolution_id\":1,\"target\":\"0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F\"}",
+            "timestamp": "1789998932"
+          },
+          {
+            "index": "5",
+            "topic": "ResolutionCommitted",
+            "payload": "{\"attempt_id\":1,\"canonical_advanced\":true,\"canonical_resolution_id\":1,\"fact_key\":\"15bb7db3ca759a01bc529872357a9380dce5c85188fdac10e163c738f5b59f08\",\"latest_resolution_id\":1,\"outcome\":\"UNRESOLVED\",\"request_id\":1,\"resolution_id\":1}",
+            "timestamp": "1789998932"
+          },
+          {
+            "index": "6",
+            "topic": "FactRequested",
+            "payload": "{\"claim_key\":\"5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3\",\"fact_key\":\"e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1\",\"request_id\":2,\"reuse\":false}",
+            "timestamp": "1789999022"
+          },
+          {
+            "index": "7",
+            "topic": "ResolutionDispatched",
+            "payload": "{\"attempt_id\":1,\"request_id\":2,\"resolver\":\"0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477\"}",
+            "timestamp": "1789999022"
+          },
+          {
+            "index": "8",
+            "topic": "CallbackRequested",
+            "payload": "{\"callback_id\":\"87c578777bb6c1a57489a8d88a13a2780bbd827016b44f6b083930065e76d02a\",\"request_id\":2,\"resolution_id\":2,\"target\":\"0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F\"}",
+            "timestamp": "1789999094"
+          },
+          {
+            "index": "9",
+            "topic": "ResolutionCommitted",
+            "payload": "{\"attempt_id\":1,\"canonical_advanced\":true,\"canonical_resolution_id\":2,\"fact_key\":\"e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1\",\"latest_resolution_id\":2,\"outcome\":\"TRUE\",\"request_id\":2,\"resolution_id\":2}",
+            "timestamp": "1789999094"
+          },
+          {
+            "index": "10",
+            "topic": "FactRequested",
+            "payload": "{\"claim_key\":\"5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3\",\"fact_key\":\"e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1\",\"request_id\":3,\"reuse\":false}",
+            "timestamp": "1789999315"
+          },
+          {
+            "index": "11",
+            "topic": "ResolutionDispatched",
+            "payload": "{\"attempt_id\":1,\"request_id\":3,\"resolver\":\"0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477\"}",
+            "timestamp": "1789999315"
+          },
+          {
+            "index": "12",
+            "topic": "ReassessmentRequested",
+            "payload": "{\"fact_key\":\"e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1\",\"notes\":\"reassessment supplemental-first certification\",\"request_id\":3}",
+            "timestamp": "1789999315"
+          },
+          {
+            "index": "13",
+            "topic": "CallbackRequested",
+            "payload": "{\"callback_id\":\"d3084ea438a6f52b3163a43be3a246ca3a1c80dcddbf547038f982dc64684cd0\",\"request_id\":3,\"resolution_id\":3,\"target\":\"0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F\"}",
+            "timestamp": "1789999390"
+          },
+          {
+            "index": "14",
+            "topic": "ResolutionCommitted",
+            "payload": "{\"attempt_id\":1,\"canonical_advanced\":true,\"canonical_resolution_id\":3,\"fact_key\":\"e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1\",\"latest_resolution_id\":3,\"outcome\":\"TRUE\",\"request_id\":3,\"resolution_id\":3}",
+            "timestamp": "1789999390"
+          }
+        ]
+      }
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "validate_seed_url",
+      "result": "PASS",
+      "actual": true
+    },
+    {
+      "contract": "EvidraResolver",
+      "method": "get_resolver_version",
+      "result": "PASS",
+      "actual": "evidra-resolver-v1"
+    },
+    {
+      "contract": "EvidraResolver",
+      "method": "get_registry",
+      "result": "PASS",
+      "actual": "0xb18f84f0de3f7ab600c6a07ec85408a7000b93b6"
+    },
+    {
+      "contract": "EvidraResolver",
+      "method": "get_capabilities",
+      "result": "PASS",
+      "actual": {
+        "version": "evidra-resolver-v1",
+        "registry": "0xb18f84f0de3f7ab600c6a07ec85408a7000b93b6",
+        "web_access": true,
+        "llm_access": true,
+        "source_isolation": true,
+        "injection_hardened": true,
+        "equivalence": "critical-fields-only"
+      }
+    },
+    {
+      "contract": "EvidraResolver",
+      "method": "get_capabilities_json",
+      "result": "PASS",
+      "actual": "{\"equivalence\":\"critical-fields-only\",\"injection_hardened\":true,\"llm_access\":true,\"source_isolation\":true,\"version\":\"evidra-resolver-v1\",\"web_access\":true}"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_trusted_registry",
+      "result": "PASS",
+      "actual": "0xb18f84f0de3f7ab600c6a07ec85408a7000b93b6"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_request_id",
+      "result": "PASS",
+      "actual": "3"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_fact_key",
+      "result": "PASS",
+      "actual": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_resolution_id",
+      "result": "PASS",
+      "actual": "3"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_outcome",
+      "result": "PASS",
+      "actual": "TRUE"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_resolved_at",
+      "result": "PASS",
+      "actual": "1789999390"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_valid_until",
+      "result": "PASS",
+      "actual": "0"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_callback_id",
+      "result": "PASS",
+      "actual": "d3084ea438a6f52b3163a43be3a246ca3a1c80dcddbf547038f982dc64684cd0"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_callback_count",
+      "result": "PASS",
+      "actual": "3"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_duplicate_ignored_count",
+      "result": "PASS",
+      "actual": "0"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "has_processed_callback",
+      "result": "PASS",
+      "actual": false
+    }
+  ],
+  "observedAt": "2026-09-21T21:39:17.179Z"
+}

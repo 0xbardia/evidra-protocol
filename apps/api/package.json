@@ -1,0 +1,29 @@
+{
+  "name": "@evidra/api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch src/server.ts",
+    "lint": "eslint src test",
+    "start": "node dist/server.js",
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@evidra/config": "workspace:*",
+    "@evidra/db": "workspace:*",
+    "@evidra/protocol": "workspace:*",
+    "@fastify/cors": "10.0.2",
+    "@fastify/helmet": "13.0.1",
+    "@fastify/rate-limit": "10.2.2",
+    "fastify": "5.12.5",
+    "zod": "3.24.4"
+  },
+  "devDependencies": {
+    "eslint": "9.17.0",
+    "tsx": "4.19.2",
+    "typescript": "5.7.3"
+  }
+}

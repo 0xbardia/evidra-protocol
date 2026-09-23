@@ -1,0 +1,2752 @@
+{
+  "schema_version": "evidra-phase0-contract-method-matrix-v1",
+  "generated_from": "Post-SSRF V1 source files under contracts/; final integration inventory",
+  "network": {
+    "name": "GenLayer Studio Dev",
+    "rpc": "https://studio-dev.genlayer.com/api",
+    "chain_id": 61997,
+    "explorer": "https://explorer-studio-dev.genlayer.com"
+  },
+  "contracts": {
+    "EvidraPolicyRegistry": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+    "EvidraRegistry": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+    "EvidraResolver": "0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477",
+    "EvidraConsumerProbe": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F"
+  },
+  "counts": {
+    "total": 90,
+    "views": 64,
+    "writes": 26,
+    "by_contract": {
+      "EvidraPolicyRegistry": 25,
+      "EvidraRegistry": 48,
+      "EvidraResolver": 5,
+      "EvidraConsumerProbe": 12
+    }
+  },
+  "methods": [
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "publish_source_policy",
+      "view_write_payable": "write",
+      "caller_permissions": "PolicyRegistry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Owner; unused ID/version; valid class lists",
+      "parameters": [
+        {
+          "name": "policy_id",
+          "type": "str"
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "min_primary_sources",
+          "type": "u32"
+        },
+        {
+          "name": "min_independent_sources",
+          "type": "u32"
+        },
+        {
+          "name": "allowed_classes",
+          "type": "str"
+        },
+        {
+          "name": "disallowed_classes",
+          "type": "str"
+        },
+        {
+          "name": "require_cross_check",
+          "type": "bool"
+        },
+        {
+          "name": "semantic_rules",
+          "type": "str"
+        }
+      ],
+      "return_type": "str",
+      "revert_error_conditions": [
+        "NOT_OWNER",
+        "INVALID_PARAM",
+        "POLICY_EXISTS",
+        "INVALID_POLICY_CLASS",
+        "DUPLICATE_POLICY_CLASS",
+        "CONTRADICTORY_POLICY_CLASS"
+      ],
+      "state_mutation": "Stores active policy, hash, counters, and event",
+      "frontend_usage": "Admin wallet only",
+      "backend_usage": "Operator tooling only",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "PolicyPublished"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "deprecate_source_policy",
+      "view_write_payable": "write",
+      "caller_permissions": "PolicyRegistry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Owner; policy exists",
+      "parameters": [
+        {
+          "name": "policy_id",
+          "type": "str"
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "NOT_OWNER",
+        "INVALID_PARAM",
+        "UNKNOWN_POLICY"
+      ],
+      "state_mutation": "Sets policy inactive/deprecated",
+      "frontend_usage": "Admin-only",
+      "backend_usage": "Operator tooling only",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "PolicyDeprecated"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "publish_template",
+      "view_write_payable": "write",
+      "caller_permissions": "PolicyRegistry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Owner; unused ID/version; bounded fields",
+      "parameters": [
+        {
+          "name": "template_id",
+          "type": "str"
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "fact_type",
+          "type": "str"
+        },
+        {
+          "name": "required_fields",
+          "type": "str"
+        },
+        {
+          "name": "resolution_instructions",
+          "type": "str"
+        },
+        {
+          "name": "default_policy_id",
+          "type": "str"
+        },
+        {
+          "name": "default_policy_version",
+          "type": "u32"
+        }
+      ],
+      "return_type": "str",
+      "revert_error_conditions": [
+        "NOT_OWNER",
+        "INVALID_PARAM",
+        "TEMPLATE_EXISTS"
+      ],
+      "state_mutation": "Stores active template, hash, counter, and event",
+      "frontend_usage": "Admin wallet only",
+      "backend_usage": "Operator tooling only",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "TemplatePublished"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "deprecate_template",
+      "view_write_payable": "write",
+      "caller_permissions": "PolicyRegistry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Owner; template exists",
+      "parameters": [
+        {
+          "name": "template_id",
+          "type": "str"
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "NOT_OWNER",
+        "INVALID_PARAM",
+        "UNKNOWN_TEMPLATE"
+      ],
+      "state_mutation": "Sets template inactive/deprecated",
+      "frontend_usage": "Admin-only",
+      "backend_usage": "Operator tooling only",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "TemplateDeprecated"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "propose_owner",
+      "view_write_payable": "write",
+      "caller_permissions": "PolicyRegistry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Owner; nonzero address",
+      "parameters": [
+        {
+          "name": "new_owner",
+          "type": "str"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "NOT_OWNER",
+        "ZERO_ADDRESS"
+      ],
+      "state_mutation": "Sets pending owner",
+      "frontend_usage": "Admin wallet only",
+      "backend_usage": "Never ordinary backend",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "OwnershipProposed"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "accept_owner",
+      "view_write_payable": "write",
+      "caller_permissions": "Pending owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Caller equals pending owner",
+      "parameters": [],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "NOT_PENDING_OWNER"
+      ],
+      "state_mutation": "Completes two-step ownership transfer",
+      "frontend_usage": "Pending-owner wallet only",
+      "backend_usage": "Never",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "OwnershipAccepted"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_source_policy",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "policy_id",
+          "type": "str"
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        }
+      ],
+      "return_type": "SourcePolicyRecord",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_latest_source_policy",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "policy_id",
+          "type": "str"
+        }
+      ],
+      "return_type": "SourcePolicyRecord",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "is_source_policy_active",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "policy_id",
+          "type": "str"
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        }
+      ],
+      "return_type": "bool",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_policy_hash",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "policy_id",
+          "type": "str"
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        }
+      ],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_template",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "template_id",
+          "type": "str"
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        }
+      ],
+      "return_type": "TemplateRecord",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_latest_template",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "template_id",
+          "type": "str"
+        }
+      ],
+      "return_type": "TemplateRecord",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "is_template_active",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "template_id",
+          "type": "str"
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        }
+      ],
+      "return_type": "bool",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_template_hash",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "template_id",
+          "type": "str"
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        }
+      ],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_latest_policy_version",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "policy_id",
+          "type": "str"
+        }
+      ],
+      "return_type": "u32",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_latest_template_version",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "template_id",
+          "type": "str"
+        }
+      ],
+      "return_type": "u32",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_ownership",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "OwnershipView",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_owner",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "Address",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_pending_owner",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "Address",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_protocol_stats",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_event_count",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "u256",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_events",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "offset",
+          "type": "u32"
+        },
+        {
+          "name": "limit",
+          "type": "u32"
+        }
+      ],
+      "return_type": "EventPage",
+      "revert_error_conditions": [
+        "INVALID_PAGINATION"
+      ],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived only",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "compute_policy_hash",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "policy_id",
+          "type": "str"
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "min_primary_sources",
+          "type": "u32"
+        },
+        {
+          "name": "min_independent_sources",
+          "type": "u32"
+        },
+        {
+          "name": "allowed_classes",
+          "type": "str"
+        },
+        {
+          "name": "disallowed_classes",
+          "type": "str"
+        },
+        {
+          "name": "require_cross_check",
+          "type": "bool"
+        },
+        {
+          "name": "semantic_rules",
+          "type": "str"
+        }
+      ],
+      "return_type": "str",
+      "revert_error_conditions": [
+        "INVALID_PARAM",
+        "INVALID_POLICY_CLASS",
+        "DUPLICATE_POLICY_CLASS",
+        "CONTRADICTORY_POLICY_CLASS"
+      ],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "compute_template_hash",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "template_id",
+          "type": "str"
+        },
+        {
+          "name": "version",
+          "type": "u32"
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "fact_type",
+          "type": "str"
+        },
+        {
+          "name": "required_fields",
+          "type": "str"
+        },
+        {
+          "name": "resolution_instructions",
+          "type": "str"
+        },
+        {
+          "name": "default_policy_id",
+          "type": "str"
+        },
+        {
+          "name": "default_policy_version",
+          "type": "u32"
+        }
+      ],
+      "return_type": "str",
+      "revert_error_conditions": [
+        "INVALID_PARAM"
+      ],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "contract_address": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+      "method": "get_registry_version",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "request_fact",
+      "view_write_payable": "write.payable",
+      "caller_permissions": "Any caller",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Not paused; active policy; valid claim/URLs/payment",
+      "parameters": [
+        {
+          "name": "subject",
+          "type": "str"
+        },
+        {
+          "name": "predicate",
+          "type": "str"
+        },
+        {
+          "name": "object_value",
+          "type": "str"
+        },
+        {
+          "name": "qualifiers",
+          "type": "str"
+        },
+        {
+          "name": "temporal",
+          "type": "str"
+        },
+        {
+          "name": "mutability",
+          "type": "str"
+        },
+        {
+          "name": "schema_version",
+          "type": "str"
+        },
+        {
+          "name": "ttl_seconds",
+          "type": "u256"
+        },
+        {
+          "name": "description",
+          "type": "str"
+        },
+        {
+          "name": "policy_id",
+          "type": "str"
+        },
+        {
+          "name": "policy_version",
+          "type": "u32"
+        },
+        {
+          "name": "seed_urls_json",
+          "type": "str"
+        },
+        {
+          "name": "callback_target",
+          "type": "str"
+        },
+        {
+          "name": "reuse_mode",
+          "type": "str"
+        }
+      ],
+      "return_type": "u256",
+      "revert_error_conditions": [
+        "PAUSED",
+        "INVALID_PARAM",
+        "UNKNOWN_POLICY",
+        "POLICY_INACTIVE",
+        "INVALID_URL",
+        "TOO_MANY_SEEDS",
+        "FEE_INSUFFICIENT",
+        "NO_DEFAULT_RESOLVER",
+        "RESOLVER_DISABLED"
+      ],
+      "state_mutation": "Creates request or REUSED fact/callback",
+      "frontend_usage": "Create Fact wallet transaction",
+      "backend_usage": "Prepare, quote, and index only; never sign",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "RequestCreated,ResolutionCommitted,Callback"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "request_fact_by_template",
+      "view_write_payable": "write.payable",
+      "caller_permissions": "Any caller",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Exact active template; required fields/fact type valid; payment/limits",
+      "parameters": [
+        {
+          "name": "template_id",
+          "type": "str"
+        },
+        {
+          "name": "template_version",
+          "type": "u32"
+        },
+        {
+          "name": "subject",
+          "type": "str"
+        },
+        {
+          "name": "predicate",
+          "type": "str"
+        },
+        {
+          "name": "object_value",
+          "type": "str"
+        },
+        {
+          "name": "qualifiers",
+          "type": "str"
+        },
+        {
+          "name": "temporal",
+          "type": "str"
+        },
+        {
+          "name": "mutability",
+          "type": "str"
+        },
+        {
+          "name": "ttl_seconds",
+          "type": "u256"
+        },
+        {
+          "name": "description",
+          "type": "str"
+        },
+        {
+          "name": "seed_urls_json",
+          "type": "str"
+        },
+        {
+          "name": "callback_target",
+          "type": "str"
+        },
+        {
+          "name": "reuse_mode",
+          "type": "str"
+        }
+      ],
+      "return_type": "u256",
+      "revert_error_conditions": [
+        "PAUSED",
+        "UNKNOWN_TEMPLATE",
+        "TEMPLATE_INACTIVE",
+        "UNKNOWN_POLICY",
+        "POLICY_INACTIVE",
+        "INVALID_PARAM",
+        "TEMPLATE_FACT_TYPE",
+        "TEMPLATE_REQUIRED_FIELD",
+        "INVALID_URL",
+        "TOO_MANY_SEEDS",
+        "FEE_INSUFFICIENT",
+        "NO_DEFAULT_RESOLVER",
+        "RESOLVER_DISABLED"
+      ],
+      "state_mutation": "Creates template-bound request",
+      "frontend_usage": "Template Create Fact wallet transaction",
+      "backend_usage": "Prepare, quote, and index only; never sign",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "RequestCreated,ResolutionCommitted,Callback"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "refresh_fact",
+      "view_write_payable": "write.payable",
+      "caller_permissions": "Any caller",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Existing mutable fact; FORCE_FRESH request",
+      "parameters": [
+        {
+          "name": "fact_key",
+          "type": "str"
+        },
+        {
+          "name": "seed_urls_json",
+          "type": "str"
+        },
+        {
+          "name": "callback_target",
+          "type": "str"
+        }
+      ],
+      "return_type": "u256",
+      "revert_error_conditions": [
+        "PAUSED",
+        "UNKNOWN_FACT",
+        "UNKNOWN_REQUEST",
+        "ALREADY_RESOLVED_IMMUTABLE",
+        "UNKNOWN_POLICY",
+        "POLICY_INACTIVE",
+        "INVALID_URL",
+        "TOO_MANY_SEEDS",
+        "FEE_INSUFFICIENT",
+        "NO_DEFAULT_RESOLVER",
+        "RESOLVER_DISABLED"
+      ],
+      "state_mutation": "Creates refresh request",
+      "frontend_usage": "Refresh wallet action",
+      "backend_usage": "Prepare/index only",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "RequestCreated,ResolutionCommitted"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "request_reassessment",
+      "view_write_payable": "write.payable",
+      "caller_permissions": "Any caller",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Existing fact; bounded supplemental URLs; FORCE_FRESH",
+      "parameters": [
+        {
+          "name": "fact_key",
+          "type": "str"
+        },
+        {
+          "name": "supplemental_urls_json",
+          "type": "str"
+        },
+        {
+          "name": "notes",
+          "type": "str"
+        },
+        {
+          "name": "callback_target",
+          "type": "str"
+        }
+      ],
+      "return_type": "u256",
+      "revert_error_conditions": [
+        "PAUSED",
+        "UNKNOWN_FACT",
+        "UNKNOWN_REQUEST",
+        "UNKNOWN_POLICY",
+        "POLICY_INACTIVE",
+        "INVALID_PARAM",
+        "INVALID_URL",
+        "TOO_MANY_SEEDS",
+        "FEE_INSUFFICIENT",
+        "NO_DEFAULT_RESOLVER",
+        "RESOLVER_DISABLED"
+      ],
+      "state_mutation": "Creates reassessment request; supplemental URLs are resolver-first",
+      "frontend_usage": "Reassessment wallet action",
+      "backend_usage": "Prepare/index only",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "RequestCreated,ResolutionCommitted"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "retry_resolution",
+      "view_write_payable": "write.payable",
+      "caller_permissions": "Requester or Registry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "PENDING/DISPATCHED; retry delay elapsed; attempts remain",
+      "parameters": [
+        {
+          "name": "request_id",
+          "type": "u256"
+        }
+      ],
+      "return_type": "u256",
+      "revert_error_conditions": [
+        "UNKNOWN_REQUEST",
+        "UNAUTHORIZED",
+        "NOTHING_TO_RETRY",
+        "MAX_ATTEMPTS",
+        "NOT_STALE",
+        "FEE_INSUFFICIENT"
+      ],
+      "state_mutation": "Increments attempt and dispatches",
+      "frontend_usage": "Explicit retry/recovery wallet action",
+      "backend_usage": "Never sign without authorization",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "ResolutionRetry,ResolutionCommitted"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "cancel_stale_request",
+      "view_write_payable": "write",
+      "caller_permissions": "Requester, Registry owner, or guardian",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "PENDING/DISPATCHED and stale",
+      "parameters": [
+        {
+          "name": "request_id",
+          "type": "u256"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "UNKNOWN_REQUEST",
+        "UNAUTHORIZED",
+        "NOTHING_TO_RETRY",
+        "NOT_STALE"
+      ],
+      "state_mutation": "CANCELLED; credits requester",
+      "frontend_usage": "Explicit cancellation/recovery action",
+      "backend_usage": "Never sign",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "RequestCancelled,Credit"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "commit_resolution",
+      "view_write_payable": "write",
+      "caller_permissions": "Assigned resolver",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Active matching attempt; identity hashes match; valid outcome/diagnostic",
+      "parameters": [
+        {
+          "name": "request_id",
+          "type": "u256"
+        },
+        {
+          "name": "attempt_id",
+          "type": "u256"
+        },
+        {
+          "name": "claim_key",
+          "type": "str"
+        },
+        {
+          "name": "fact_key",
+          "type": "str"
+        },
+        {
+          "name": "spec_hash",
+          "type": "str"
+        },
+        {
+          "name": "policy_hash",
+          "type": "str"
+        },
+        {
+          "name": "outcome",
+          "type": "str"
+        },
+        {
+          "name": "diagnostic_reason",
+          "type": "str"
+        },
+        {
+          "name": "policy_satisfied",
+          "type": "bool"
+        },
+        {
+          "name": "resolver_version",
+          "type": "str"
+        },
+        {
+          "name": "evidence_manifest_json",
+          "type": "str"
+        },
+        {
+          "name": "reasoning_summary",
+          "type": "str"
+        },
+        {
+          "name": "valid_until",
+          "type": "u256"
+        }
+      ],
+      "return_type": "u256",
+      "revert_error_conditions": [
+        "UNKNOWN_REQUEST",
+        "NOT_ASSIGNED_RESOLVER",
+        "NOTHING_TO_RETRY",
+        "STALE_ATTEMPT",
+        "BINDING_MISMATCH",
+        "INVALID_PARAM"
+      ],
+      "state_mutation": "Creates resolution/manifest; advances latest and maybe canonical; callback dispatch",
+      "frontend_usage": "Never directly",
+      "backend_usage": "Index only; resolver contract path owns commit",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "ResolutionCommitted"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "request_callback_retry",
+      "view_write_payable": "write",
+      "caller_permissions": "Requester or Registry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Resolved/reused; callback DISPATCHED or FAILED_REPORTED",
+      "parameters": [
+        {
+          "name": "request_id",
+          "type": "u256"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "UNKNOWN_REQUEST",
+        "UNAUTHORIZED",
+        "INVALID_PARAM",
+        "NOTHING_TO_RETRY",
+        "CALLBACK_NOT_FAILED",
+        "UNKNOWN_RESOLUTION"
+      ],
+      "state_mutation": "Redispatches callback using same callback identity",
+      "frontend_usage": "Callback recovery status/admin action",
+      "backend_usage": "Observe only; never sign",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "CallbackDispatched,CallbackResult"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "mark_callback_result",
+      "view_write_payable": "write",
+      "caller_permissions": "Recorded callback target",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Callback target exists; V1 does not require dispatched/terminal state",
+      "parameters": [
+        {
+          "name": "request_id",
+          "type": "u256"
+        },
+        {
+          "name": "succeeded",
+          "type": "bool"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "UNKNOWN_REQUEST",
+        "INVALID_PARAM",
+        "UNAUTHORIZED"
+      ],
+      "state_mutation": "ACKNOWLEDGED or FAILED_REPORTED",
+      "frontend_usage": "Never directly",
+      "backend_usage": "Never impersonate target",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "CallbackSucceeded,CallbackFailed"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "withdraw_credit",
+      "view_write_payable": "write",
+      "caller_permissions": "Caller’s own credit",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Positive caller credit",
+      "parameters": [],
+      "return_type": "u256",
+      "revert_error_conditions": [
+        "NO_CREDIT"
+      ],
+      "state_mutation": "Zeroes credit and emits finalized transfer",
+      "frontend_usage": "Wallet withdrawal action",
+      "backend_usage": "Never sign for user",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "CreditWithdrawn"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "set_resolver_enabled",
+      "view_write_payable": "write",
+      "caller_permissions": "Registry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Owner; nonzero resolver",
+      "parameters": [
+        {
+          "name": "resolver",
+          "type": "str"
+        },
+        {
+          "name": "enabled",
+          "type": "bool"
+        },
+        {
+          "name": "resolver_version",
+          "type": "str"
+        },
+        {
+          "name": "capabilities",
+          "type": "str"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "NOT_OWNER",
+        "ZERO_ADDRESS",
+        "INVALID_PARAM"
+      ],
+      "state_mutation": "Creates/updates resolver registration",
+      "frontend_usage": "Admin-only",
+      "backend_usage": "Operator authorization only",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "ResolverUpdated"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "set_default_resolver",
+      "view_write_payable": "write",
+      "caller_permissions": "Registry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Owner; registered and enabled resolver",
+      "parameters": [
+        {
+          "name": "resolver",
+          "type": "str"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "NOT_OWNER",
+        "ZERO_ADDRESS",
+        "RESOLVER_DISABLED"
+      ],
+      "state_mutation": "Changes default resolver",
+      "frontend_usage": "Admin-only",
+      "backend_usage": "Operator authorization only",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "ResolverUpdated"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "set_fee_config",
+      "view_write_payable": "write",
+      "caller_permissions": "Registry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Owner; bounded attempt/source/delay settings",
+      "parameters": [
+        {
+          "name": "fee_base",
+          "type": "u256"
+        },
+        {
+          "name": "fee_per_attempt",
+          "type": "u256"
+        },
+        {
+          "name": "fee_reuse",
+          "type": "u256"
+        },
+        {
+          "name": "retry_delay_seconds",
+          "type": "u256"
+        },
+        {
+          "name": "stale_after_seconds",
+          "type": "u256"
+        },
+        {
+          "name": "max_attempts",
+          "type": "u32"
+        },
+        {
+          "name": "max_seed_urls",
+          "type": "u32"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "NOT_OWNER",
+        "INVALID_PARAM"
+      ],
+      "state_mutation": "Changes fee and retry/source configuration",
+      "frontend_usage": "Admin-only",
+      "backend_usage": "Read config; never assume values",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "ProtocolConfigChanged"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "set_guardian",
+      "view_write_payable": "write",
+      "caller_permissions": "Registry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Owner; nonzero guardian",
+      "parameters": [
+        {
+          "name": "guardian",
+          "type": "str"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "NOT_OWNER",
+        "ZERO_ADDRESS"
+      ],
+      "state_mutation": "Changes guardian",
+      "frontend_usage": "Admin-only",
+      "backend_usage": "Operator authorization only",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "GuardianChanged"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "pause_new_requests",
+      "view_write_payable": "write",
+      "caller_permissions": "Registry guardian",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Guardian",
+      "parameters": [],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "NOT_GUARDIAN"
+      ],
+      "state_mutation": "Sets paused=true",
+      "frontend_usage": "Maintenance state only",
+      "backend_usage": "Observe only",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "ProtocolPaused"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "unpause_new_requests",
+      "view_write_payable": "write",
+      "caller_permissions": "Registry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Owner",
+      "parameters": [],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "NOT_OWNER"
+      ],
+      "state_mutation": "Sets paused=false",
+      "frontend_usage": "Maintenance state only",
+      "backend_usage": "Observe only",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "ProtocolUnpaused"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "propose_owner",
+      "view_write_payable": "write",
+      "caller_permissions": "Registry owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Owner; nonzero",
+      "parameters": [
+        {
+          "name": "new_owner",
+          "type": "str"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "NOT_OWNER",
+        "ZERO_ADDRESS"
+      ],
+      "state_mutation": "Sets pending owner",
+      "frontend_usage": "Admin wallet only",
+      "backend_usage": "Never ordinary backend",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "OwnershipProposed"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "accept_owner",
+      "view_write_payable": "write",
+      "caller_permissions": "Pending owner",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Caller equals pending owner",
+      "parameters": [],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "NOT_PENDING_OWNER"
+      ],
+      "state_mutation": "Completes ownership transfer",
+      "frontend_usage": "Pending-owner wallet only",
+      "backend_usage": "Never",
+      "user_wallet_must_call": true,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "OwnershipAccepted"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_request",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "request_id",
+          "type": "u256"
+        }
+      ],
+      "return_type": "RequestRecord",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_request_status",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "request_id",
+          "type": "u256"
+        }
+      ],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_fact",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "fact_key",
+          "type": "str"
+        }
+      ],
+      "return_type": "FactRecord",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Canonical fact projection",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_current_resolution",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "fact_key",
+          "type": "str"
+        }
+      ],
+      "return_type": "ResolutionRecord",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Canonical resolution panel",
+      "backend_usage": "Canonical resolution join",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_latest_resolution",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "fact_key",
+          "type": "str"
+        }
+      ],
+      "return_type": "ResolutionRecord",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Latest attempt panel; label it non-canonical when applicable",
+      "backend_usage": "Latest-attempt join kept separate from canonical",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_resolution",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "resolution_id",
+          "type": "u256"
+        }
+      ],
+      "return_type": "ResolutionRecord",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_resolution_history",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "fact_key",
+          "type": "str"
+        },
+        {
+          "name": "offset",
+          "type": "u32"
+        },
+        {
+          "name": "limit",
+          "type": "u32"
+        }
+      ],
+      "return_type": "ResolutionHistoryPage",
+      "revert_error_conditions": [
+        "INVALID_PAGINATION"
+      ],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived/bounded pagination",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_evidence_manifest",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "resolution_id",
+          "type": "u256"
+        }
+      ],
+      "return_type": "EvidenceManifestView",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Evidence tab; sanitize URLs before display",
+      "backend_usage": "Evidence projection with source sanitization",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "compute_claim_key",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "subject",
+          "type": "str"
+        },
+        {
+          "name": "predicate",
+          "type": "str"
+        },
+        {
+          "name": "object_value",
+          "type": "str"
+        },
+        {
+          "name": "qualifiers",
+          "type": "str"
+        },
+        {
+          "name": "temporal",
+          "type": "str"
+        },
+        {
+          "name": "mutability",
+          "type": "str"
+        }
+      ],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Preview/verification helper only",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "compute_fact_key",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "claim_key",
+          "type": "str"
+        },
+        {
+          "name": "policy_hash",
+          "type": "str"
+        },
+        {
+          "name": "schema_version",
+          "type": "str"
+        },
+        {
+          "name": "template_hash",
+          "type": "str"
+        }
+      ],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Preview/verification helper only",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "compute_spec_hash",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "Callers failing input parsing/limits",
+      "state_requirements": "Valid scalar fields and bounded seed list",
+      "parameters": [
+        {
+          "name": "subject",
+          "type": "str"
+        },
+        {
+          "name": "predicate",
+          "type": "str"
+        },
+        {
+          "name": "object_value",
+          "type": "str"
+        },
+        {
+          "name": "qualifiers",
+          "type": "str"
+        },
+        {
+          "name": "temporal",
+          "type": "str"
+        },
+        {
+          "name": "mutability",
+          "type": "str"
+        },
+        {
+          "name": "schema_version",
+          "type": "str"
+        },
+        {
+          "name": "ttl_seconds",
+          "type": "u256"
+        },
+        {
+          "name": "description",
+          "type": "str"
+        },
+        {
+          "name": "seed_urls_json",
+          "type": "str"
+        }
+      ],
+      "return_type": "str",
+      "revert_error_conditions": [
+        "INVALID_PARAM",
+        "INVALID_URL",
+        "TOO_MANY_SEEDS"
+      ],
+      "state_mutation": "None",
+      "frontend_usage": "Preview/verification helper only",
+      "backend_usage": "Read for deterministic preflight; write remains authoritative",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "is_fact_fresh",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "fact_key",
+          "type": "str"
+        }
+      ],
+      "return_type": "bool",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Freshness/reuse preflight, never verdict",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "can_reuse_fact",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "fact_key",
+          "type": "str"
+        }
+      ],
+      "return_type": "bool",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Freshness/reuse preflight, never verdict",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "can_reuse_with_freshness",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "fact_key",
+          "type": "str"
+        },
+        {
+          "name": "requested_ttl",
+          "type": "u256"
+        }
+      ],
+      "return_type": "bool",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Freshness/reuse preflight, never verdict",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "compute_callback_id",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "request_id",
+          "type": "u256"
+        },
+        {
+          "name": "resolution_id",
+          "type": "u256"
+        },
+        {
+          "name": "consumer",
+          "type": "str"
+        }
+      ],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "quote_resolution_fee",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "reuse_mode",
+          "type": "str"
+        }
+      ],
+      "return_type": "u256",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Fee review; network fee separate",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_protocol_config",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "ProtocolConfig",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_resolver",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "resolver",
+          "type": "str"
+        }
+      ],
+      "return_type": "ResolverInfo",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_protocol_stats",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "ProtocolStats",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_credit",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "account",
+          "type": "str"
+        }
+      ],
+      "return_type": "u256",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_job_snapshot",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "request_id",
+          "type": "u256"
+        }
+      ],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Diagnostics only; not canonical truth",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_owner",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "Address",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_guardian",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "Address",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "is_paused",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "bool",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_policy_registry",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "Address",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_default_resolver",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "Address",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_registry_version",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_event_count",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "u256",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "get_events",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "offset",
+          "type": "u32"
+        },
+        {
+          "name": "limit",
+          "type": "u32"
+        }
+      ],
+      "return_type": "EventPage",
+      "revert_error_conditions": [
+        "INVALID_PAGINATION"
+      ],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived/bounded pagination",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "contract_address": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+      "method": "validate_seed_url",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "Callers failing URL validation",
+      "state_requirements": "URL must pass V1 HTTPS/address checks",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "str"
+        }
+      ],
+      "return_type": "bool",
+      "revert_error_conditions": [
+        "INVALID_URL"
+      ],
+      "state_mutation": "None",
+      "frontend_usage": "Client preflight only; transaction validation still authoritative",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraResolver",
+      "contract_address": "0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477",
+      "method": "resolve_request",
+      "view_write_payable": "write",
+      "caller_permissions": "Configured Registry contract",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Registry-dispatched matching request/attempt",
+      "parameters": [
+        {
+          "name": "request_id",
+          "type": "u256"
+        },
+        {
+          "name": "attempt_id",
+          "type": "u256"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "UNAUTHORIZED",
+        "UNKNOWN_REQUEST",
+        "NOTHING_TO_RETRY",
+        "STALE_ATTEMPT",
+        "NOT_ASSIGNED_RESOLVER",
+        "BINDING_MISMATCH",
+        "UNKNOWN_POLICY",
+        "UNKNOWN_TEMPLATE",
+        "INVALID_PARAM",
+        "INTERNAL_RESOLUTION_ERROR"
+      ],
+      "state_mutation": "Web/LLM lifecycle then Registry.commit_resolution",
+      "frontend_usage": "Never directly",
+      "backend_usage": "Observe/index only; do not call as API",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "ResolutionCommitted"
+    },
+    {
+      "contract": "EvidraResolver",
+      "contract_address": "0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477",
+      "method": "get_resolver_version",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraResolver",
+      "contract_address": "0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477",
+      "method": "get_registry",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "Address",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraResolver",
+      "contract_address": "0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477",
+      "method": "get_capabilities",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "ResolverCapabilities",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraResolver",
+      "contract_address": "0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477",
+      "method": "get_capabilities_json",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Read protocol state",
+      "backend_usage": "Read, normalize, and cache with finalized reads",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Yes with trigger-aware invalidation",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "contract_address": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F",
+      "method": "on_evidra_result",
+      "view_write_payable": "write",
+      "caller_permissions": "Exact trusted Registry address",
+      "rejected_callers": "Callers failing permission, input, or state checks",
+      "state_requirements": "Sender is trusted registry; callback ID may repeat",
+      "parameters": [
+        {
+          "name": "request_id",
+          "type": "u256"
+        },
+        {
+          "name": "fact_key",
+          "type": "str"
+        },
+        {
+          "name": "resolution_id",
+          "type": "u256"
+        },
+        {
+          "name": "outcome",
+          "type": "str"
+        },
+        {
+          "name": "resolved_at",
+          "type": "u256"
+        },
+        {
+          "name": "valid_until",
+          "type": "u256"
+        },
+        {
+          "name": "callback_id",
+          "type": "str"
+        }
+      ],
+      "return_type": "void",
+      "revert_error_conditions": [
+        "UNAUTHORIZED"
+      ],
+      "state_mutation": "Stores first callback and increments duplicate counter on repeats",
+      "frontend_usage": "Never directly",
+      "backend_usage": "Read probe only; no backend signing",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": true,
+      "requires_finalized_followup": true,
+      "cache_recommendation": "No",
+      "cache_invalidation_trigger": "Callback delivery"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "contract_address": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F",
+      "method": "get_trusted_registry",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "Address",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Demo callback telemetry; never canonical substitute",
+      "backend_usage": "Probe telemetry only",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "contract_address": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F",
+      "method": "get_last_request_id",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "u256",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Demo callback telemetry; never canonical substitute",
+      "backend_usage": "Probe telemetry only",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "contract_address": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F",
+      "method": "get_last_fact_key",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Demo callback telemetry; never canonical substitute",
+      "backend_usage": "Probe telemetry only",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "contract_address": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F",
+      "method": "get_last_resolution_id",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "u256",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Demo callback telemetry; never canonical substitute",
+      "backend_usage": "Probe telemetry only",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "contract_address": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F",
+      "method": "get_last_outcome",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Demo callback telemetry; never canonical substitute",
+      "backend_usage": "Probe telemetry only",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "contract_address": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F",
+      "method": "get_last_resolved_at",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "u256",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Demo callback telemetry; never canonical substitute",
+      "backend_usage": "Probe telemetry only",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "contract_address": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F",
+      "method": "get_last_valid_until",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "u256",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Demo callback telemetry; never canonical substitute",
+      "backend_usage": "Probe telemetry only",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "contract_address": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F",
+      "method": "get_last_callback_id",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "str",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Demo callback telemetry; never canonical substitute",
+      "backend_usage": "Probe telemetry only",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "contract_address": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F",
+      "method": "get_callback_count",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "u256",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Demo callback telemetry; never canonical substitute",
+      "backend_usage": "Probe telemetry only",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "contract_address": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F",
+      "method": "get_duplicate_ignored_count",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [],
+      "return_type": "u256",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Demo callback telemetry; never canonical substitute",
+      "backend_usage": "Probe telemetry only",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "contract_address": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F",
+      "method": "has_processed_callback",
+      "view_write_payable": "view",
+      "caller_permissions": "public",
+      "rejected_callers": "None except invalid lookup/pagination inputs",
+      "state_requirements": "None",
+      "parameters": [
+        {
+          "name": "callback_id",
+          "type": "str"
+        }
+      ],
+      "return_type": "bool",
+      "revert_error_conditions": [],
+      "state_mutation": "None",
+      "frontend_usage": "Demo callback telemetry; never canonical substitute",
+      "backend_usage": "Probe telemetry only",
+      "user_wallet_must_call": false,
+      "backend_must_never_call": false,
+      "requires_finalized_followup": false,
+      "cache_recommendation": "Short-lived",
+      "cache_invalidation_trigger": "Relevant finalized event/configuration change"
+    }
+  ]
+}

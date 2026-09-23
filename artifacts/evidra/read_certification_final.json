@@ -1,0 +1,1310 @@
+{
+  "network": {
+    "name": "GenLayer Studio Dev",
+    "rpc": "https://studio-dev.genlayer.com/api",
+    "chainId": 61997
+  },
+  "deployment": {
+    "policy": "0x8583F226DB262a97dba3f00c3D2A0D13D08B6c71",
+    "registry": "0xB18f84F0dE3F7aB600C6A07Ec85408a7000b93b6",
+    "resolver": "0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477",
+    "consumer": "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F"
+  },
+  "readVariant": "latest-final",
+  "latestFinalProbe": {
+    "result": "PASS",
+    "actual": "evidra-policy-registry-v1"
+  },
+  "uniquePublicViews": {
+    "total": 64,
+    "passed": 64,
+    "failed": 0
+  },
+  "results": [
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_source_policy",
+      "arguments": [
+        "core",
+        1
+      ],
+      "expectedSemantics": "Returns the exact stored policy record for the requested policy ID and version.",
+      "actual": {
+        "active": true,
+        "allowed_classes": "OFFICIAL,PRIMARY,INDEPENDENT_SECONDARY",
+        "deprecated": false,
+        "disallowed_classes": "SOCIAL,COMMUNITY",
+        "exists": true,
+        "min_independent_sources": 1,
+        "min_primary_sources": 1,
+        "name": "Core official sources",
+        "policy_hash": "9873510c8ec0dec312548910acce8207a8022f7c5327c6614c09154f9a268f27",
+        "policy_id": "core",
+        "published_at": 1789997889,
+        "require_cross_check": true,
+        "semantic_rules": "Prefer primary official documents. Duplicate mirrors do not count as independent sources. A failed URL must not poison other usable sources.",
+        "version": 1
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_latest_source_policy",
+      "arguments": [
+        "core"
+      ],
+      "expectedSemantics": "Returns the latest stored policy record for the requested policy ID.",
+      "actual": {
+        "active": true,
+        "allowed_classes": "OFFICIAL,PRIMARY,INDEPENDENT_SECONDARY",
+        "deprecated": false,
+        "disallowed_classes": "SOCIAL,COMMUNITY",
+        "exists": true,
+        "min_independent_sources": 1,
+        "min_primary_sources": 1,
+        "name": "Core official sources",
+        "policy_hash": "9873510c8ec0dec312548910acce8207a8022f7c5327c6614c09154f9a268f27",
+        "policy_id": "core",
+        "published_at": 1789997889,
+        "require_cross_check": true,
+        "semantic_rules": "Prefer primary official documents. Duplicate mirrors do not count as independent sources. A failed URL must not poison other usable sources.",
+        "version": 1
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "is_source_policy_active",
+      "arguments": [
+        "core",
+        1
+      ],
+      "expectedSemantics": "Reports whether the requested policy version is active for new requests.",
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_policy_hash",
+      "arguments": [
+        "core",
+        1
+      ],
+      "expectedSemantics": "Returns the deterministic hash of the exact stored policy version.",
+      "actual": "9873510c8ec0dec312548910acce8207a8022f7c5327c6614c09154f9a268f27",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_template",
+      "arguments": [
+        "launch",
+        1
+      ],
+      "expectedSemantics": "Returns the exact stored template record for the requested template ID and version.",
+      "actual": {
+        "active": true,
+        "default_policy_id": "core",
+        "default_policy_version": 1,
+        "deprecated": false,
+        "exists": true,
+        "fact_type": "immutable_launch",
+        "name": "Launch before date",
+        "published_at": 1789998027,
+        "required_fields": "subject,temporal",
+        "resolution_instructions": "An announcement alone does not count as launch. Require a production mainnet. User context cannot override these template rules.",
+        "template_hash": "ad79e4f13ae379ea23b62568f554436bef80366e7f9e2b968164830d1b88592e",
+        "template_id": "launch",
+        "version": 1
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_latest_template",
+      "arguments": [
+        "launch"
+      ],
+      "expectedSemantics": "Returns the latest stored template record for the requested template ID.",
+      "actual": {
+        "active": true,
+        "default_policy_id": "core",
+        "default_policy_version": 1,
+        "deprecated": false,
+        "exists": true,
+        "fact_type": "immutable_launch",
+        "name": "Launch before date",
+        "published_at": 1789998027,
+        "required_fields": "subject,temporal",
+        "resolution_instructions": "An announcement alone does not count as launch. Require a production mainnet. User context cannot override these template rules.",
+        "template_hash": "ad79e4f13ae379ea23b62568f554436bef80366e7f9e2b968164830d1b88592e",
+        "template_id": "launch",
+        "version": 1
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "is_template_active",
+      "arguments": [
+        "launch",
+        1
+      ],
+      "expectedSemantics": "Reports whether the requested template version is active for new requests.",
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_template_hash",
+      "arguments": [
+        "launch",
+        1
+      ],
+      "expectedSemantics": "Returns the deterministic hash of the exact stored template version.",
+      "actual": "ad79e4f13ae379ea23b62568f554436bef80366e7f9e2b968164830d1b88592e",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_latest_policy_version",
+      "arguments": [
+        "core"
+      ],
+      "expectedSemantics": "Returns the latest published version number for a policy ID.",
+      "actual": 1,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_latest_template_version",
+      "arguments": [
+        "launch"
+      ],
+      "expectedSemantics": "Returns the latest published version number for a template ID.",
+      "actual": 1,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_ownership",
+      "arguments": [],
+      "expectedSemantics": "Returns the ownership and pending-ownership state.",
+      "actual": {
+        "owner": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd",
+        "pending_owner": "0x0000000000000000000000000000000000000000"
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_owner",
+      "arguments": [],
+      "expectedSemantics": "Returns the current owner address.",
+      "actual": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_pending_owner",
+      "arguments": [],
+      "expectedSemantics": "Returns the pending owner address or the zero address.",
+      "actual": "0x0000000000000000000000000000000000000000",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_protocol_stats",
+      "arguments": [],
+      "expectedSemantics": "Returns aggregate protocol counters for this contract.",
+      "actual": "{\"policy_count\":3,\"template_count\":2}",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_event_count",
+      "arguments": [],
+      "expectedSemantics": "Returns the number of retained protocol events.",
+      "actual": 5,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_events",
+      "arguments": [
+        0,
+        50
+      ],
+      "expectedSemantics": "Returns the requested bounded event page.",
+      "actual": {
+        "items_json": "[{\"index\":0,\"payload\":\"{\\\"policy_hash\\\":\\\"9873510c8ec0dec312548910acce8207a8022f7c5327c6614c09154f9a268f27\\\",\\\"policy_id\\\":\\\"core\\\",\\\"version\\\":1}\",\"timestamp\":1789997889,\"topic\":\"PolicyPublished\"},{\"index\":1,\"payload\":\"{\\\"policy_hash\\\":\\\"e432ebeb2d2029505886af9da948b101dceb742cfa539e7459ff8a53b68f1ff8\\\",\\\"policy_id\\\":\\\"solo\\\",\\\"version\\\":1}\",\"timestamp\":1789997935,\"topic\":\"PolicyPublished\"},{\"index\":2,\"payload\":\"{\\\"policy_hash\\\":\\\"c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4\\\",\\\"policy_id\\\":\\\"freeze_official\\\",\\\"version\\\":1}\",\"timestamp\":1789997981,\"topic\":\"PolicyPublished\"},{\"index\":3,\"payload\":\"{\\\"template_hash\\\":\\\"ad79e4f13ae379ea23b62568f554436bef80366e7f9e2b968164830d1b88592e\\\",\\\"template_id\\\":\\\"launch\\\",\\\"version\\\":1}\",\"timestamp\":1789998027,\"topic\":\"TemplatePublished\"},{\"index\":4,\"payload\":\"{\\\"template_hash\\\":\\\"e70540d76ba50adac87d03bdb7d0ab948e40883c15949f6c0843069d050156af\\\",\\\"template_id\\\":\\\"launch_announce\\\",\\\"version\\\":1}\",\"timestamp\":1789998072,\"topic\":\"TemplatePublished\"}]",
+        "limit": 50,
+        "offset": 0,
+        "total": 5
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "compute_policy_hash",
+      "arguments": [
+        "core",
+        1,
+        "Core official sources",
+        1,
+        1,
+        "OFFICIAL,PRIMARY,INDEPENDENT_SECONDARY",
+        "SOCIAL,COMMUNITY",
+        true,
+        "Prefer primary official documents. Duplicate mirrors do not count as independent sources. A failed URL must not poison other usable sources."
+      ],
+      "expectedSemantics": "Computes the policy hash preview for the supplied canonical policy inputs.",
+      "actual": "9873510c8ec0dec312548910acce8207a8022f7c5327c6614c09154f9a268f27",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "compute_template_hash",
+      "arguments": [
+        "launch",
+        1,
+        "Launch before date",
+        "immutable_launch",
+        "subject,temporal",
+        "An announcement alone does not count as launch. Require a production mainnet. User context cannot override these template rules.",
+        "core",
+        1
+      ],
+      "expectedSemantics": "Computes the template hash preview for the supplied canonical template inputs.",
+      "actual": "ad79e4f13ae379ea23b62568f554436bef80366e7f9e2b968164830d1b88592e",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_registry_version",
+      "arguments": [],
+      "expectedSemantics": "Returns the deployed contract version string.",
+      "actual": "evidra-policy-registry-v1",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_request",
+      "arguments": [
+        "3"
+      ],
+      "expectedSemantics": "Returns the exact request record for the request ID, including lifecycle state and attempt fields.",
+      "actual": {
+        "active_attempt_id": 1,
+        "assigned_resolver": "0xd21e9e95cbd59058fbcc2599c3a28a3fae44c477",
+        "attempt_count": 1,
+        "callback_status": "DISPATCHED",
+        "callback_target": "0x5b73a45ba6b3560b6ecd020feff95c5fa0693c2f",
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "created_at": 1789999315,
+        "current_resolution_id": 3,
+        "description": "Verify the public Example Domain page.",
+        "exists": true,
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "fact_type": "",
+        "fee_paid": 0,
+        "last_attempt_at": 1789999315,
+        "max_attempts": 5,
+        "mutability": "IMMUTABLE",
+        "object_value": "Example Domain",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "policy_id": "freeze_official",
+        "policy_version": 1,
+        "predicate": "publishes the Example Domain page",
+        "qualifiers": "",
+        "request_id": 3,
+        "requester": "0x578fc6d37a351160dcd32de30e55c87ead34da31",
+        "retry_after": 1789999375,
+        "reuse_mode": "FORCE_FRESH_RESOLUTION",
+        "schema_version": "1",
+        "seed_urls_json": "[\"https://example.com/\"]",
+        "spec_hash": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+        "status": "RESOLVED",
+        "subject": "example.com",
+        "supplemental_urls_json": "[\"https://example.com/\"]",
+        "template_hash": "",
+        "template_id": "",
+        "template_resolution_instructions": "",
+        "template_version": 0,
+        "temporal": "2026-09-21",
+        "ttl_seconds": 0
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_request_status",
+      "arguments": [
+        "3"
+      ],
+      "expectedSemantics": "Returns the current lifecycle status for the request ID.",
+      "actual": "RESOLVED",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_fact",
+      "arguments": [
+        "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1"
+      ],
+      "expectedSemantics": "Returns the fact record and canonical/latest resolution pointers for the fact key.",
+      "actual": {
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "current_outcome": "TRUE",
+        "current_request_id": 3,
+        "current_resolution_id": 3,
+        "exists": true,
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "latest_resolution_id": 3,
+        "mutability": "IMMUTABLE",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "resolution_version": 2,
+        "resolved_at": 1789999390,
+        "schema_version": "1",
+        "template_hash": "",
+        "valid_until": 0
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_current_resolution",
+      "arguments": [
+        "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1"
+      ],
+      "expectedSemantics": "Returns the canonical resolution selected by the fact record.",
+      "actual": {
+        "attempt_id": 1,
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "committed_at": 1789999390,
+        "diagnostic_reason": "NONE",
+        "evaluated_at": 1789999390,
+        "evidence_manifest_hash": "73e31c561cc99d518dee2e91779f2cdbb3fa884cb2137dcbef131103d0749d36",
+        "exists": true,
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "outcome": "TRUE",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "policy_satisfied": true,
+        "reasoning_summary": "The official usable source at example.com displays the title and content of the Example Domain page, supporting that example.com publishes the Example Domain page.",
+        "request_id": 3,
+        "resolution_id": 3,
+        "resolution_version": 2,
+        "resolver_version": "evidra-resolver-v1",
+        "spec_hash": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+        "supersedes_resolution_id": 2,
+        "template_hash": "",
+        "template_id": "",
+        "template_version": 0,
+        "valid_until": 0
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_latest_resolution",
+      "arguments": [
+        "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1"
+      ],
+      "expectedSemantics": "Returns the newest committed resolution attempt for the fact key.",
+      "actual": {
+        "attempt_id": 1,
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "committed_at": 1789999390,
+        "diagnostic_reason": "NONE",
+        "evaluated_at": 1789999390,
+        "evidence_manifest_hash": "73e31c561cc99d518dee2e91779f2cdbb3fa884cb2137dcbef131103d0749d36",
+        "exists": true,
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "outcome": "TRUE",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "policy_satisfied": true,
+        "reasoning_summary": "The official usable source at example.com displays the title and content of the Example Domain page, supporting that example.com publishes the Example Domain page.",
+        "request_id": 3,
+        "resolution_id": 3,
+        "resolution_version": 2,
+        "resolver_version": "evidra-resolver-v1",
+        "spec_hash": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+        "supersedes_resolution_id": 2,
+        "template_hash": "",
+        "template_id": "",
+        "template_version": 0,
+        "valid_until": 0
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_resolution",
+      "arguments": [
+        "3"
+      ],
+      "expectedSemantics": "Returns the exact resolution record for the resolution ID.",
+      "actual": {
+        "attempt_id": 1,
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "committed_at": 1789999390,
+        "diagnostic_reason": "NONE",
+        "evaluated_at": 1789999390,
+        "evidence_manifest_hash": "73e31c561cc99d518dee2e91779f2cdbb3fa884cb2137dcbef131103d0749d36",
+        "exists": true,
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "outcome": "TRUE",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "policy_satisfied": true,
+        "reasoning_summary": "The official usable source at example.com displays the title and content of the Example Domain page, supporting that example.com publishes the Example Domain page.",
+        "request_id": 3,
+        "resolution_id": 3,
+        "resolution_version": 2,
+        "resolver_version": "evidra-resolver-v1",
+        "spec_hash": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+        "supersedes_resolution_id": 2,
+        "template_hash": "",
+        "template_id": "",
+        "template_version": 0,
+        "valid_until": 0
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_resolution_history",
+      "arguments": [
+        "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        0,
+        50
+      ],
+      "expectedSemantics": "Returns the bounded historical resolution page for the fact key.",
+      "actual": {
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "limit": 50,
+        "offset": 0,
+        "resolution_ids_json": "[2,3]",
+        "total": 2
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_evidence_manifest",
+      "arguments": [
+        "3"
+      ],
+      "expectedSemantics": "Returns the evidence manifest attached to the resolution ID.",
+      "actual": {
+        "exists": true,
+        "manifest_hash": "73e31c561cc99d518dee2e91779f2cdbb3fa884cb2137dcbef131103d0749d36",
+        "manifest_json": "[{\"category\":\"web\",\"evidence_hash\":\"7559101ddc53819aabdec7cb24ab8a739a6e45f28d2aa4a87fd5b370f2d4bc85\",\"fetch_status\":\"USABLE\",\"is_independent\":true,\"is_primary\":true,\"policy_eligible\":true,\"provenance_group\":\"example.com\",\"relevant_timestamp\":\"\",\"source_class\":\"OFFICIAL\",\"source_origin\":\"supplemental\",\"url\":\"https://example.com/\"}]",
+        "resolution_id": 3
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "compute_claim_key",
+      "arguments": [
+        "example.com",
+        "publishes the Example Domain page",
+        "Example Domain",
+        "",
+        "2026-09-21",
+        "IMMUTABLE"
+      ],
+      "expectedSemantics": "Computes the semantic claim identity from the supplied claim fields.",
+      "actual": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "compute_fact_key",
+      "arguments": [
+        "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "1",
+        ""
+      ],
+      "expectedSemantics": "Computes the fact identity from claim, policy, schema, and template identity inputs.",
+      "actual": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "compute_spec_hash",
+      "arguments": [
+        "example.com",
+        "publishes the Example Domain page",
+        "Example Domain",
+        "",
+        "2026-09-21",
+        "IMMUTABLE",
+        "1",
+        "0",
+        "Verify the public Example Domain page.",
+        "[\"https://example.com/\"]"
+      ],
+      "expectedSemantics": "Computes the request specification hash from execution parameters and validated seed inputs.",
+      "actual": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "is_fact_fresh",
+      "arguments": [
+        "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1"
+      ],
+      "expectedSemantics": "Reports whether the fact has a canonical resolution that is currently within valid_until.",
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "can_reuse_fact",
+      "arguments": [
+        "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1"
+      ],
+      "expectedSemantics": "Reports whether the configured reuse mode permits reuse of the current fact.",
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "can_reuse_with_freshness",
+      "arguments": [
+        "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "0"
+      ],
+      "expectedSemantics": "Reports whether the requested reuse mode and freshness requirement permit reuse.",
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "compute_callback_id",
+      "arguments": [
+        "3",
+        "3",
+        "0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F"
+      ],
+      "expectedSemantics": "Computes the deterministic callback identity for request, resolution, and consumer.",
+      "actual": "d3084ea438a6f52b3163a43be3a246ca3a1c80dcddbf547038f982dc64684cd0",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "quote_resolution_fee",
+      "arguments": [
+        "REUSE_IF_FRESH"
+      ],
+      "expectedSemantics": "Returns the protocol fee quote for the requested reuse mode.",
+      "actual": 0,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_protocol_config",
+      "arguments": [],
+      "expectedSemantics": "Returns the current protocol configuration and fee/limit parameters.",
+      "actual": {
+        "default_resolver": "0xd21e9e95cbd59058fbcc2599c3a28a3fae44c477",
+        "fee_base": 0,
+        "fee_per_attempt": 0,
+        "fee_reuse": 0,
+        "guardian": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd",
+        "max_attempts": 5,
+        "max_seed_urls": 8,
+        "owner": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd",
+        "paused_new_requests": false,
+        "pending_owner": "0x0000000000000000000000000000000000000000",
+        "policy_registry": "0x8583f226db262a97dba3f00c3d2a0d13d08b6c71",
+        "registry_version": "evidra-registry-v1",
+        "retry_delay_seconds": 60,
+        "schema_version": "1",
+        "stale_after_seconds": 86400
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_resolver",
+      "arguments": [
+        "0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477"
+      ],
+      "expectedSemantics": "Returns the resolver registration and enabled state for the resolver address.",
+      "actual": {
+        "capabilities": "{\"equivalence\":\"critical-fields-only\",\"injection_hardened\":true,\"llm_access\":true,\"source_isolation\":true,\"version\":\"evidra-resolver-v1\",\"web_access\":true}",
+        "enabled": true,
+        "exists": true,
+        "registered_at": 1789998259,
+        "resolver": "0xd21e9e95cbd59058fbcc2599c3a28a3fae44c477",
+        "resolver_version": "evidra-resolver-v1"
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_protocol_stats",
+      "arguments": [],
+      "expectedSemantics": "Returns aggregate protocol counters for this contract.",
+      "actual": {
+        "event_count": 15,
+        "paused": false,
+        "request_count": 3,
+        "resolution_count": 3,
+        "reused_count": 0
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_credit",
+      "arguments": [
+        "0x0000000000000000000000000000000000000000"
+      ],
+      "expectedSemantics": "Returns the stored protocol credit balance for the supplied address.",
+      "actual": 0,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_job_snapshot",
+      "arguments": [
+        "3"
+      ],
+      "expectedSemantics": "Returns the request/job snapshot used for resolver execution.",
+      "actual": "{\"active_attempt_id\":1,\"assigned_resolver\":\"0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477\",\"callback_status\":\"DISPATCHED\",\"callback_target\":\"0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F\",\"claim_key\":\"5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3\",\"description\":\"Verify the public Example Domain page.\",\"fact_key\":\"e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1\",\"fact_type\":\"\",\"mutability\":\"IMMUTABLE\",\"object_value\":\"Example Domain\",\"policy_hash\":\"c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4\",\"policy_id\":\"freeze_official\",\"policy_version\":1,\"predicate\":\"publishes the Example Domain page\",\"qualifiers\":\"\",\"request_id\":3,\"schema_version\":\"1\",\"seed_urls_json\":\"[\\\"https://example.com/\\\"]\",\"spec_hash\":\"cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b\",\"status\":\"RESOLVED\",\"subject\":\"example.com\",\"supplemental_urls_json\":\"[\\\"https://example.com/\\\"]\",\"template_hash\":\"\",\"template_id\":\"\",\"template_resolution_instructions\":\"\",\"template_version\":0,\"temporal\":\"2026-09-21\",\"ttl_seconds\":0}",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_owner",
+      "arguments": [],
+      "expectedSemantics": "Returns the current owner address.",
+      "actual": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_guardian",
+      "arguments": [],
+      "expectedSemantics": "Returns the guardian address.",
+      "actual": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "is_paused",
+      "arguments": [],
+      "expectedSemantics": "Reports whether new protocol requests are paused.",
+      "actual": false,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_policy_registry",
+      "arguments": [],
+      "expectedSemantics": "Returns the configured policy registry address.",
+      "actual": "0x8583f226db262a97dba3f00c3d2a0d13d08b6c71",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_default_resolver",
+      "arguments": [],
+      "expectedSemantics": "Returns the configured default resolver address.",
+      "actual": "0xd21e9e95cbd59058fbcc2599c3a28a3fae44c477",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_registry_version",
+      "arguments": [],
+      "expectedSemantics": "Returns the deployed contract version string.",
+      "actual": "evidra-registry-v1",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_event_count",
+      "arguments": [],
+      "expectedSemantics": "Returns the number of retained protocol events.",
+      "actual": 15,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "get_events",
+      "arguments": [
+        0,
+        50
+      ],
+      "expectedSemantics": "Returns the requested bounded event page.",
+      "actual": {
+        "items_json": "[{\"index\":0,\"payload\":\"{\\\"enabled\\\":true,\\\"resolver\\\":\\\"0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477\\\"}\",\"timestamp\":1789998259,\"topic\":\"ResolverUpdated\"},{\"index\":1,\"payload\":\"{\\\"default\\\":\\\"0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477\\\"}\",\"timestamp\":1789998306,\"topic\":\"ResolverUpdated\"},{\"index\":2,\"payload\":\"{\\\"claim_key\\\":\\\"5958d9c2b6ea3d39343decaca7a01ed715175808924a976df9c4eabd95578743\\\",\\\"fact_key\\\":\\\"15bb7db3ca759a01bc529872357a9380dce5c85188fdac10e163c738f5b59f08\\\",\\\"request_id\\\":1,\\\"reuse\\\":false}\",\"timestamp\":1789998841,\"topic\":\"FactRequested\"},{\"index\":3,\"payload\":\"{\\\"attempt_id\\\":1,\\\"request_id\\\":1,\\\"resolver\\\":\\\"0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477\\\"}\",\"timestamp\":1789998841,\"topic\":\"ResolutionDispatched\"},{\"index\":4,\"payload\":\"{\\\"callback_id\\\":\\\"b367d08bb662f05f7dcc653d2e92847089f0e0be7186a61dc4189855595552fc\\\",\\\"request_id\\\":1,\\\"resolution_id\\\":1,\\\"target\\\":\\\"0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F\\\"}\",\"timestamp\":1789998932,\"topic\":\"CallbackRequested\"},{\"index\":5,\"payload\":\"{\\\"attempt_id\\\":1,\\\"canonical_advanced\\\":true,\\\"canonical_resolution_id\\\":1,\\\"fact_key\\\":\\\"15bb7db3ca759a01bc529872357a9380dce5c85188fdac10e163c738f5b59f08\\\",\\\"latest_resolution_id\\\":1,\\\"outcome\\\":\\\"UNRESOLVED\\\",\\\"request_id\\\":1,\\\"resolution_id\\\":1}\",\"timestamp\":1789998932,\"topic\":\"ResolutionCommitted\"},{\"index\":6,\"payload\":\"{\\\"claim_key\\\":\\\"5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3\\\",\\\"fact_key\\\":\\\"e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1\\\",\\\"request_id\\\":2,\\\"reuse\\\":false}\",\"timestamp\":1789999022,\"topic\":\"FactRequested\"},{\"index\":7,\"payload\":\"{\\\"attempt_id\\\":1,\\\"request_id\\\":2,\\\"resolver\\\":\\\"0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477\\\"}\",\"timestamp\":1789999022,\"topic\":\"ResolutionDispatched\"},{\"index\":8,\"payload\":\"{\\\"callback_id\\\":\\\"87c578777bb6c1a57489a8d88a13a2780bbd827016b44f6b083930065e76d02a\\\",\\\"request_id\\\":2,\\\"resolution_id\\\":2,\\\"target\\\":\\\"0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F\\\"}\",\"timestamp\":1789999094,\"topic\":\"CallbackRequested\"},{\"index\":9,\"payload\":\"{\\\"attempt_id\\\":1,\\\"canonical_advanced\\\":true,\\\"canonical_resolution_id\\\":2,\\\"fact_key\\\":\\\"e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1\\\",\\\"latest_resolution_id\\\":2,\\\"outcome\\\":\\\"TRUE\\\",\\\"request_id\\\":2,\\\"resolution_id\\\":2}\",\"timestamp\":1789999094,\"topic\":\"ResolutionCommitted\"},{\"index\":10,\"payload\":\"{\\\"claim_key\\\":\\\"5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3\\\",\\\"fact_key\\\":\\\"e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1\\\",\\\"request_id\\\":3,\\\"reuse\\\":false}\",\"timestamp\":1789999315,\"topic\":\"FactRequested\"},{\"index\":11,\"payload\":\"{\\\"attempt_id\\\":1,\\\"request_id\\\":3,\\\"resolver\\\":\\\"0xD21E9e95CBd59058fbCC2599C3A28a3faE44C477\\\"}\",\"timestamp\":1789999315,\"topic\":\"ResolutionDispatched\"},{\"index\":12,\"payload\":\"{\\\"fact_key\\\":\\\"e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1\\\",\\\"notes\\\":\\\"reassessment supplemental-first certification\\\",\\\"request_id\\\":3}\",\"timestamp\":1789999315,\"topic\":\"ReassessmentRequested\"},{\"index\":13,\"payload\":\"{\\\"callback_id\\\":\\\"d3084ea438a6f52b3163a43be3a246ca3a1c80dcddbf547038f982dc64684cd0\\\",\\\"request_id\\\":3,\\\"resolution_id\\\":3,\\\"target\\\":\\\"0x5B73a45BA6b3560B6ECd020FefF95c5Fa0693C2F\\\"}\",\"timestamp\":1789999390,\"topic\":\"CallbackRequested\"},{\"index\":14,\"payload\":\"{\\\"attempt_id\\\":1,\\\"canonical_advanced\\\":true,\\\"canonical_resolution_id\\\":3,\\\"fact_key\\\":\\\"e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1\\\",\\\"latest_resolution_id\\\":3,\\\"outcome\\\":\\\"TRUE\\\",\\\"request_id\\\":3,\\\"resolution_id\\\":3}\",\"timestamp\":1789999390,\"topic\":\"ResolutionCommitted\"}]",
+        "limit": 50,
+        "offset": 0,
+        "total": 15
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraRegistry",
+      "method": "validate_seed_url",
+      "arguments": [
+        "https://example.com/"
+      ],
+      "expectedSemantics": "Validates a source URL under the hardened V1 URL policy.",
+      "actual": true,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraResolver",
+      "method": "get_resolver_version",
+      "arguments": [],
+      "expectedSemantics": "Returns the resolver version string.",
+      "actual": "evidra-resolver-v1",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraResolver",
+      "method": "get_registry",
+      "arguments": [],
+      "expectedSemantics": "Returns the registry address configured in the resolver.",
+      "actual": "0xb18f84f0de3f7ab600c6a07ec85408a7000b93b6",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraResolver",
+      "method": "get_capabilities",
+      "arguments": [],
+      "expectedSemantics": "Returns the resolver capability string.",
+      "actual": {
+        "equivalence": "critical-fields-only",
+        "injection_hardened": true,
+        "llm_access": true,
+        "registry": "0xb18f84f0de3f7ab600c6a07ec85408a7000b93b6",
+        "source_isolation": true,
+        "version": "evidra-resolver-v1",
+        "web_access": true
+      },
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraResolver",
+      "method": "get_capabilities_json",
+      "arguments": [],
+      "expectedSemantics": "Returns the resolver capabilities in structured JSON form.",
+      "actual": "{\"equivalence\":\"critical-fields-only\",\"injection_hardened\":true,\"llm_access\":true,\"source_isolation\":true,\"version\":\"evidra-resolver-v1\",\"web_access\":true}",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_trusted_registry",
+      "arguments": [],
+      "expectedSemantics": "Returns the registry address trusted by the consumer probe.",
+      "actual": "0xb18f84f0de3f7ab600c6a07ec85408a7000b93b6",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_request_id",
+      "arguments": [],
+      "expectedSemantics": "Returns the most recently acknowledged callback request ID.",
+      "actual": 3,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_fact_key",
+      "arguments": [],
+      "expectedSemantics": "Returns the fact key from the most recently acknowledged callback.",
+      "actual": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_resolution_id",
+      "arguments": [],
+      "expectedSemantics": "Returns the resolution ID from the most recently acknowledged callback.",
+      "actual": 3,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_outcome",
+      "arguments": [],
+      "expectedSemantics": "Returns the outcome from the most recently acknowledged callback.",
+      "actual": "TRUE",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_resolved_at",
+      "arguments": [],
+      "expectedSemantics": "Returns the resolved_at timestamp from the most recently acknowledged callback.",
+      "actual": 1789999390,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_valid_until",
+      "arguments": [],
+      "expectedSemantics": "Returns the valid_until timestamp from the most recently acknowledged callback.",
+      "actual": 0,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_last_callback_id",
+      "arguments": [],
+      "expectedSemantics": "Returns the callback ID from the most recently acknowledged callback.",
+      "actual": "d3084ea438a6f52b3163a43be3a246ca3a1c80dcddbf547038f982dc64684cd0",
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_callback_count",
+      "arguments": [],
+      "expectedSemantics": "Returns the number of callbacks accepted by the consumer probe.",
+      "actual": 3,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "get_duplicate_ignored_count",
+      "arguments": [],
+      "expectedSemantics": "Returns the number of duplicate callbacks ignored by the consumer probe.",
+      "actual": 0,
+      "result": "PASS"
+    },
+    {
+      "contract": "EvidraConsumerProbe",
+      "method": "has_processed_callback",
+      "arguments": [
+        "0000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "expectedSemantics": "Reports whether the supplied callback ID has already been processed.",
+      "actual": false,
+      "result": "PASS"
+    }
+  ],
+  "scenarioCoverage": [
+    {
+      "scenario": "configured-policy",
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_source_policy",
+      "arguments": [
+        "core",
+        1
+      ],
+      "expectedSemantics": "Configured policy record must be readable.",
+      "actual": {
+        "active": true,
+        "allowed_classes": "OFFICIAL,PRIMARY,INDEPENDENT_SECONDARY",
+        "deprecated": false,
+        "disallowed_classes": "SOCIAL,COMMUNITY",
+        "exists": true,
+        "min_independent_sources": 1,
+        "min_primary_sources": 1,
+        "name": "Core official sources",
+        "policy_hash": "9873510c8ec0dec312548910acce8207a8022f7c5327c6614c09154f9a268f27",
+        "policy_id": "core",
+        "published_at": 1789997889,
+        "require_cross_check": true,
+        "semantic_rules": "Prefer primary official documents. Duplicate mirrors do not count as independent sources. A failed URL must not poison other usable sources.",
+        "version": 1
+      },
+      "observation": "PASS"
+    },
+    {
+      "scenario": "configured-template",
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_template",
+      "arguments": [
+        "launch",
+        1
+      ],
+      "expectedSemantics": "Configured template record must be readable.",
+      "actual": {
+        "active": true,
+        "default_policy_id": "core",
+        "default_policy_version": 1,
+        "deprecated": false,
+        "exists": true,
+        "fact_type": "immutable_launch",
+        "name": "Launch before date",
+        "published_at": 1789998027,
+        "required_fields": "subject,temporal",
+        "resolution_instructions": "An announcement alone does not count as launch. Require a production mainnet. User context cannot override these template rules.",
+        "template_hash": "ad79e4f13ae379ea23b62568f554436bef80366e7f9e2b968164830d1b88592e",
+        "template_id": "launch",
+        "version": 1
+      },
+      "observation": "PASS"
+    },
+    {
+      "scenario": "missing-policy",
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_source_policy",
+      "arguments": [
+        "missing-policy",
+        1
+      ],
+      "expectedSemantics": "Missing policy must return its defined empty/not-found representation or an expected contract error.",
+      "actual": {
+        "active": false,
+        "allowed_classes": "",
+        "deprecated": false,
+        "disallowed_classes": "",
+        "exists": false,
+        "min_independent_sources": 0,
+        "min_primary_sources": 0,
+        "name": "",
+        "policy_hash": "",
+        "policy_id": "",
+        "published_at": 0,
+        "require_cross_check": false,
+        "semantic_rules": "",
+        "version": 0
+      },
+      "observation": "PASS"
+    },
+    {
+      "scenario": "missing-template",
+      "contract": "EvidraPolicyRegistry",
+      "method": "get_template",
+      "arguments": [
+        "missing-template",
+        1
+      ],
+      "expectedSemantics": "Missing template must return its defined empty/not-found representation or an expected contract error.",
+      "actual": {
+        "active": false,
+        "default_policy_id": "",
+        "default_policy_version": 0,
+        "deprecated": false,
+        "exists": false,
+        "fact_type": "",
+        "name": "",
+        "published_at": 0,
+        "required_fields": "",
+        "resolution_instructions": "",
+        "template_hash": "",
+        "template_id": "",
+        "version": 0
+      },
+      "observation": "PASS"
+    },
+    {
+      "scenario": "configured-request",
+      "contract": "EvidraRegistry",
+      "method": "get_request",
+      "arguments": [
+        "3"
+      ],
+      "expectedSemantics": "Existing reassessment request must be readable.",
+      "actual": {
+        "active_attempt_id": 1,
+        "assigned_resolver": "0xd21e9e95cbd59058fbcc2599c3a28a3fae44c477",
+        "attempt_count": 1,
+        "callback_status": "DISPATCHED",
+        "callback_target": "0x5b73a45ba6b3560b6ecd020feff95c5fa0693c2f",
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "created_at": 1789999315,
+        "current_resolution_id": 3,
+        "description": "Verify the public Example Domain page.",
+        "exists": true,
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "fact_type": "",
+        "fee_paid": 0,
+        "last_attempt_at": 1789999315,
+        "max_attempts": 5,
+        "mutability": "IMMUTABLE",
+        "object_value": "Example Domain",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "policy_id": "freeze_official",
+        "policy_version": 1,
+        "predicate": "publishes the Example Domain page",
+        "qualifiers": "",
+        "request_id": 3,
+        "requester": "0x578fc6d37a351160dcd32de30e55c87ead34da31",
+        "retry_after": 1789999375,
+        "reuse_mode": "FORCE_FRESH_RESOLUTION",
+        "schema_version": "1",
+        "seed_urls_json": "[\"https://example.com/\"]",
+        "spec_hash": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+        "status": "RESOLVED",
+        "subject": "example.com",
+        "supplemental_urls_json": "[\"https://example.com/\"]",
+        "template_hash": "",
+        "template_id": "",
+        "template_resolution_instructions": "",
+        "template_version": 0,
+        "temporal": "2026-09-21",
+        "ttl_seconds": 0
+      },
+      "observation": "PASS"
+    },
+    {
+      "scenario": "resolution-state",
+      "contract": "EvidraRegistry",
+      "method": "get_resolution",
+      "arguments": [
+        "3"
+      ],
+      "expectedSemantics": "Existing resolution must expose committed outcome and metadata.",
+      "actual": {
+        "attempt_id": 1,
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "committed_at": 1789999390,
+        "diagnostic_reason": "NONE",
+        "evaluated_at": 1789999390,
+        "evidence_manifest_hash": "73e31c561cc99d518dee2e91779f2cdbb3fa884cb2137dcbef131103d0749d36",
+        "exists": true,
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "outcome": "TRUE",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "policy_satisfied": true,
+        "reasoning_summary": "The official usable source at example.com displays the title and content of the Example Domain page, supporting that example.com publishes the Example Domain page.",
+        "request_id": 3,
+        "resolution_id": 3,
+        "resolution_version": 2,
+        "resolver_version": "evidra-resolver-v1",
+        "spec_hash": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+        "supersedes_resolution_id": 2,
+        "template_hash": "",
+        "template_id": "",
+        "template_version": 0,
+        "valid_until": 0
+      },
+      "observation": "PASS"
+    },
+    {
+      "scenario": "canonical-resolution",
+      "contract": "EvidraRegistry",
+      "method": "get_current_resolution",
+      "arguments": [
+        "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1"
+      ],
+      "expectedSemantics": "Canonical resolution must be readable independently of latest resolution.",
+      "actual": {
+        "attempt_id": 1,
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "committed_at": 1789999390,
+        "diagnostic_reason": "NONE",
+        "evaluated_at": 1789999390,
+        "evidence_manifest_hash": "73e31c561cc99d518dee2e91779f2cdbb3fa884cb2137dcbef131103d0749d36",
+        "exists": true,
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "outcome": "TRUE",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "policy_satisfied": true,
+        "reasoning_summary": "The official usable source at example.com displays the title and content of the Example Domain page, supporting that example.com publishes the Example Domain page.",
+        "request_id": 3,
+        "resolution_id": 3,
+        "resolution_version": 2,
+        "resolver_version": "evidra-resolver-v1",
+        "spec_hash": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+        "supersedes_resolution_id": 2,
+        "template_hash": "",
+        "template_id": "",
+        "template_version": 0,
+        "valid_until": 0
+      },
+      "observation": "PASS"
+    },
+    {
+      "scenario": "latest-resolution",
+      "contract": "EvidraRegistry",
+      "method": "get_latest_resolution",
+      "arguments": [
+        "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1"
+      ],
+      "expectedSemantics": "Latest resolution attempt must be readable independently of canonical resolution.",
+      "actual": {
+        "attempt_id": 1,
+        "claim_key": "5928183907a78b3b075b829d38457aefb9143e2dd13c2da49ef33db8ea3f21f3",
+        "committed_at": 1789999390,
+        "diagnostic_reason": "NONE",
+        "evaluated_at": 1789999390,
+        "evidence_manifest_hash": "73e31c561cc99d518dee2e91779f2cdbb3fa884cb2137dcbef131103d0749d36",
+        "exists": true,
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "outcome": "TRUE",
+        "policy_hash": "c3ca8f47d5d00f29d09820fa362f9e8f0625477dbbd5647a64be8b210753bcf4",
+        "policy_satisfied": true,
+        "reasoning_summary": "The official usable source at example.com displays the title and content of the Example Domain page, supporting that example.com publishes the Example Domain page.",
+        "request_id": 3,
+        "resolution_id": 3,
+        "resolution_version": 2,
+        "resolver_version": "evidra-resolver-v1",
+        "spec_hash": "cfa721f243473c81c7a9273279450f44690a2cb81788cab9cfc837ef6263968b",
+        "supersedes_resolution_id": 2,
+        "template_hash": "",
+        "template_id": "",
+        "template_version": 0,
+        "valid_until": 0
+      },
+      "observation": "PASS"
+    },
+    {
+      "scenario": "history",
+      "contract": "EvidraRegistry",
+      "method": "get_resolution_history",
+      "arguments": [
+        "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        0,
+        50
+      ],
+      "expectedSemantics": "Historical resolution pagination must return the available committed versions.",
+      "actual": {
+        "fact_key": "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1",
+        "limit": 50,
+        "offset": 0,
+        "resolution_ids_json": "[2,3]",
+        "total": 2
+      },
+      "observation": "PASS"
+    },
+    {
+      "scenario": "evidence",
+      "contract": "EvidraRegistry",
+      "method": "get_evidence_manifest",
+      "arguments": [
+        "3"
+      ],
+      "expectedSemantics": "Evidence manifest for the existing resolution must be readable.",
+      "actual": {
+        "exists": true,
+        "manifest_hash": "73e31c561cc99d518dee2e91779f2cdbb3fa884cb2137dcbef131103d0749d36",
+        "manifest_json": "[{\"category\":\"web\",\"evidence_hash\":\"7559101ddc53819aabdec7cb24ab8a739a6e45f28d2aa4a87fd5b370f2d4bc85\",\"fetch_status\":\"USABLE\",\"is_independent\":true,\"is_primary\":true,\"policy_eligible\":true,\"provenance_group\":\"example.com\",\"relevant_timestamp\":\"\",\"source_class\":\"OFFICIAL\",\"source_origin\":\"supplemental\",\"url\":\"https://example.com/\"}]",
+        "resolution_id": 3
+      },
+      "observation": "PASS"
+    },
+    {
+      "scenario": "freshness",
+      "contract": "EvidraRegistry",
+      "method": "is_fact_fresh",
+      "arguments": [
+        "e164495ffdf07a91f5a3f04c1d83eeae4d3098dbed64c5ed6f0b3c0680266cb1"
+      ],
+      "expectedSemantics": "Freshness must be derived from the canonical fact timestamps.",
+      "actual": true,
+      "observation": "PASS"
+    },
+    {
+      "scenario": "callback",
+      "contract": "EvidraConsumerProbe",
+      "method": "get_callback_count",
+      "arguments": [],
+      "expectedSemantics": "Callback counter must be readable after the live callback lifecycle.",
+      "actual": 3,
+      "observation": "PASS"
+    },
+    {
+      "scenario": "protocol-config",
+      "contract": "EvidraRegistry",
+      "method": "get_protocol_config",
+      "arguments": [],
+      "expectedSemantics": "Protocol configuration must be readable.",
+      "actual": {
+        "default_resolver": "0xd21e9e95cbd59058fbcc2599c3a28a3fae44c477",
+        "fee_base": 0,
+        "fee_per_attempt": 0,
+        "fee_reuse": 0,
+        "guardian": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd",
+        "max_attempts": 5,
+        "max_seed_urls": 8,
+        "owner": "0x3b9f9ea77dcfe638e28c2c8f219f5dac949ac4fd",
+        "paused_new_requests": false,
+        "pending_owner": "0x0000000000000000000000000000000000000000",
+        "policy_registry": "0x8583f226db262a97dba3f00c3d2a0d13d08b6c71",
+        "registry_version": "evidra-registry-v1",
+        "retry_delay_seconds": 60,
+        "schema_version": "1",
+        "stale_after_seconds": 86400
+      },
+      "observation": "PASS"
+    },
+    {
+      "scenario": "missing-request",
+      "contract": "EvidraRegistry",
+      "method": "get_request",
+      "arguments": [
+        "999999"
+      ],
+      "expectedSemantics": "Missing request must return its defined empty/not-found representation or an expected contract error.",
+      "actual": {
+        "active_attempt_id": 0,
+        "assigned_resolver": "0x0000000000000000000000000000000000000000",
+        "attempt_count": 0,
+        "callback_status": "NOT_REQUESTED",
+        "callback_target": "0x0000000000000000000000000000000000000000",
+        "claim_key": "",
+        "created_at": 0,
+        "current_resolution_id": 0,
+        "description": "",
+        "exists": false,
+        "fact_key": "",
+        "fact_type": "",
+        "fee_paid": 0,
+        "last_attempt_at": 0,
+        "max_attempts": 0,
+        "mutability": "",
+        "object_value": "",
+        "policy_hash": "",
+        "policy_id": "",
+        "policy_version": 0,
+        "predicate": "",
+        "qualifiers": "",
+        "request_id": 0,
+        "requester": "0x0000000000000000000000000000000000000000",
+        "retry_after": 0,
+        "reuse_mode": "",
+        "schema_version": "",
+        "seed_urls_json": "[]",
+        "spec_hash": "",
+        "status": "",
+        "subject": "",
+        "supplemental_urls_json": "[]",
+        "template_hash": "",
+        "template_id": "",
+        "template_resolution_instructions": "",
+        "template_version": 0,
+        "temporal": "",
+        "ttl_seconds": 0
+      },
+      "observation": "PASS"
+    },
+    {
+      "scenario": "missing-fact",
+      "contract": "EvidraRegistry",
+      "method": "get_fact",
+      "arguments": [
+        "0000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "expectedSemantics": "Missing fact must return its defined empty/not-found representation or an expected contract error.",
+      "actual": {
+        "claim_key": "",
+        "current_outcome": "",
+        "current_request_id": 0,
+        "current_resolution_id": 0,
+        "exists": false,
+        "fact_key": "",
+        "latest_resolution_id": 0,
+        "mutability": "",
+        "policy_hash": "",
+        "resolution_version": 0,
+        "resolved_at": 0,
+        "schema_version": "",
+        "template_hash": "",
+        "valid_until": 0
+      },
+      "observation": "PASS"
+    }
+  ]
+}

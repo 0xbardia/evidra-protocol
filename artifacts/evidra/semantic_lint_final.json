@@ -1,0 +1,45 @@
+{
+  "tool": "genvm-linter",
+  "tool_version": "0.11.1rc2",
+  "runtime": "GenVM v0.6.0-rc5",
+  "result": "PASS",
+  "errors": 0,
+  "contracts": [
+    {
+      "file": "contracts/evidra_consumer_probe.py",
+      "lint_ok": true,
+      "validate_ok": true,
+      "methods": 12,
+      "views": 11,
+      "writes": 1,
+      "constructors": 1
+    },
+    {
+      "file": "contracts/evidra_policy_registry.py",
+      "lint_ok": true,
+      "validate_ok": true,
+      "methods": 25,
+      "views": 19,
+      "writes": 6,
+      "constructors": 0
+    },
+    {
+      "file": "contracts/evidra_registry.py",
+      "lint_ok": true,
+      "validate_ok": true,
+      "methods": 48,
+      "views": 30,
+      "writes": 18,
+      "constructors": 1
+    },
+    {
+      "file": "contracts/evidra_resolver.py",
+      "lint_ok": true,
+      "validate_ok": true,
+      "methods": 5,
+      "views": 4,
+      "writes": 1,
+      "constructors": 1
+    }
+  ]
+}

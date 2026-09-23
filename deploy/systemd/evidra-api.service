@@ -1,0 +1,28 @@
+[Unit]
+Description=Evidra Protocol read API and finalized-state indexer
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=evidra
+Group=evidra
+WorkingDirectory=/opt/evidra-protocol
+Environment=NODE_ENV=production
+Environment=PATH=/usr/local/lib/evidra:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+EnvironmentFile=/etc/evidra/evidra.env
+ExecStart=/usr/local/lib/evidra/node /opt/evidra-protocol/apps/api/dist/server.js
+Restart=on-failure
+RestartSec=5s
+KillSignal=SIGTERM
+TimeoutStopSec=30s
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/evidra-protocol
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target

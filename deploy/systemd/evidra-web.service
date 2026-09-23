@@ -1,0 +1,29 @@
+[Unit]
+Description=Evidra Protocol Next.js web application
+After=network-online.target evidra-api.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=evidra
+Group=evidra
+WorkingDirectory=/opt/evidra-protocol/apps/web
+Environment=NODE_ENV=production
+Environment=PORT=3100
+Environment=HOSTNAME=127.0.0.1
+Environment=PATH=/usr/local/lib/evidra:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+ExecStart=/usr/local/lib/evidra/node /opt/evidra-protocol/apps/web/node_modules/next/dist/bin/next start -p 3100 -H 127.0.0.1
+Restart=on-failure
+RestartSec=5s
+KillSignal=SIGTERM
+TimeoutStopSec=30s
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/evidra-protocol/apps/web/.next
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target
