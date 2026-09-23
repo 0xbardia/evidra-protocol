@@ -63,6 +63,7 @@ pnpm install --frozen-lockfile
 cp .env.example .env
 cp apps/web/.env.example apps/web/.env.local
 # Set DATABASE_URL to a PostgreSQL database you control.
+pnpm build
 pnpm db:migrate
 pnpm dev:all
 ```
@@ -99,15 +100,15 @@ See [`SECURITY.md`](SECURITY.md), [`docs/APP_SECURITY_BOUNDARY.md`](docs/APP_SEC
 ## Checks
 
 ```sh
+pnpm build
 pnpm verify:contracts
 pnpm typecheck
 pnpm lint
 pnpm test
 pnpm test:browser
-pnpm build
 ```
 
-The database integration test uses `EVIDRA_TEST_DATABASE_URL` when provided; otherwise it targets the local `evidra_test` database over the Unix socket using the current OS role. Browser tests require the configured Playwright browser. Do not run state-changing wallet tests against a production wallet.
+Build the workspace first so the internal packages' `dist` entry points exist for typechecking and tests. The database integration test uses `EVIDRA_TEST_DATABASE_URL` when provided; otherwise it targets the local `evidra_test` database over the Unix socket using the current OS role. Browser tests require the configured Playwright browser. Do not run state-changing wallet tests against a production wallet.
 
 ## Documentation
 
